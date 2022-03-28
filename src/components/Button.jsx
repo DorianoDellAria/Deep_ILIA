@@ -1,35 +1,32 @@
 import React from 'react'
 
-const styleButton = {
+let styleButton = {
     position: "absolute",
-    width: "110px",
-    height: "37px",
+
     left: "0px",
     top: "0px",
     background: "#BD0E3A",
-    borderRadius: "58px"
-}
-
-const styleText = {
-    position: 'absolute',
-    width: '61px',
-    height: '21px',
-    left: '21px',
-    top: '7px',
+    borderRadius: "58px",
     fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: '700',
     fontSize: '18px',
     lineHeight: '21px',
     color: '#FFFFFF',
+    padding: "7px 21px",
 }
 
-function Button({ children, onClick }) {
+
+function Button({ children, onClick, variant }) {
+    switch (variant) {
+        case "secondary":
+            styleButton.background = "#4D4D4D"
+        
+    }
+
     return (
         <button style={styleButton} onClick={onClick}>
-            <div style={styleText}>
-                {children}
-            </div>
+            {children}
         </button>
     )
 }
