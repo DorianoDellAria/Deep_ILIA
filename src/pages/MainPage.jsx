@@ -9,7 +9,7 @@ function MainPage() {
       <div className="logo">
         <img src={logo} alt="deep-logo" />
       </div>
-      <Button onClick={()=>alert('button')}>
+      <Button onClick={()=>alert('button')} variant="primary">
         Sign up &gt;
       </Button>
     </div>
