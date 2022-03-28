@@ -1,0 +1,12 @@
+
+
+div.logo {
+    margin-left: 277px;
+    margin-top: 53px;
+   
+}
+
+div.logo > img {
+    width: 200px;
+    height: auto;
+}
