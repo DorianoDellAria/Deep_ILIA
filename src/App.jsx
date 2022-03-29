@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 import MainPage from './pages/MainPage'
 
-import './App.css'
+import './App.scss'
 
 function App() {
   return (
