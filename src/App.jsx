@@ -6,14 +6,15 @@ import MainPage from './pages/MainPage'
 import './App.scss'
 
 function App() {
-  return (
-    <div className='App'>
-      <Router>
-        <Routes>
-          <Route path='/' element={<MainPage/>} />
-        </Routes>
-      </Router>
-    </div>
+  return (<>
+      <div className='App'>
+        <Router>
+          <Routes>
+            <Route path='/' element={<MainPage/>} />
+          </Routes>
+        </Router>
+      </div>
+    </>
   )
 }
 
