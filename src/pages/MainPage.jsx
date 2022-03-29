@@ -3,7 +3,7 @@ import "./MainPage.css"
 
 function MainPage() {
   return (
-    <h1>Main page</h1>
+    <h1 className="is-primary">Main page</h1>
   )
 }
 
