@@ -6,7 +6,7 @@ div.logo {
    
 }
 
-div.logo > img {
+div.logo img {
     width: 200px;
     height: auto;
 }
