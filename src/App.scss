@@ -1,13 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "../node_modules/bulma/sass/utilities/initial-variables.sass";
 
-$primary: #bd0e3a;
-$secondary: #4d4d4d;
+$primary : #BD0E3A;
+$secondary : #4D4D4D;
+$family-primary: "Roboto", $family-sans-serif;
 
 @import "../node_modules/bulma/bulma.sass";
 
-/* .App {
+body {
+  background-image: url(./assets/background.svg);
+  height: 100vh;
+  background-size: 1200px;
+}
+
+p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: justify;
+
+  color: #000000;
+}
+
+h1 {
+  font-style: italic;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 70px;
   text-align: center;
-} */
+  padding: 16vh 0;
+}
+
+h1.is-primary {
+  color: $primary;
+}
+
+h2 {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 47px;
+  text-align: justify;
+}
+
+h2.is-primary {
+  color: $primary;
+}
+
+.container {
+  margin: 0 14%;
+}
+
+.header-info {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: right;
+
+  color: #00366D;
+}
 
 .navbar {
   width: 80%;
@@ -17,7 +71,6 @@ $secondary: #4d4d4d;
 
 .button {
   border-radius: 58px;
-  font-family: Roboto;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
