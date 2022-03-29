@@ -1,14 +1,19 @@
 @import "../node_modules/bulma/sass/utilities/initial-variables.sass";
 
-$primary : #BD0E3A;
-$secondary : #4D4D4D;
-
+$primary: #bd0e3a;
+$secondary: #4d4d4d;
 
 @import "../node_modules/bulma/bulma.sass";
 
 /* .App {
   text-align: center;
 } */
+
+.navbar {
+  width: 80%;
+  margin: auto;
+  // justify-content: flex-end;
+}
 
 .button {
   border-radius: 58px;
@@ -21,4 +26,45 @@ $secondary : #4D4D4D;
   color: white;
   border: 0;
   height: auto;
+}
+
+.navbar-start {
+  margin-right: 0;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navbar-start a.navbar-item {
+  background-color: $secondary;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #ffffff;
+  height: 35px;
+  margin-right: 3px;
+}
+
+.navbar-start a.navbar-item:nth-child(1) {
+  background-color: $primary;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.navbar-start a.navbar-item:last-child {
+  border-radius: 0px 10px 10px 0px;
+  margin-right: 0;
+  flex-grow: 1;
+}
+
+a.button.is-secondary {
+  background-color: $secondary;
+
+  :hover & {
+    color: #ffffff;
+  }
 }
