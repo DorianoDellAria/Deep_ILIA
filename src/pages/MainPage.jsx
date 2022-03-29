@@ -7,13 +7,11 @@ import "./MainPage.css"
 function MainPage() {
   return (
     <div className='MainPage'>
-      <div className="logo">
-        <img src={logo} alt="deep-logo" />
-      </div>
-      <Button onClick={()=>alert('button')} variant="primary"> {/*TODO useCallback*/}
-        Sign up &gt;
-      </Button>
-      <NavBar />
+
+        <Button onClick={() => alert('button')} variant="primary">
+          Sign up &gt;
+        </Button>
+      {/* <NavBar /> */}
 
     </div>
   )
