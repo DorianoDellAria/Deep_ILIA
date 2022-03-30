@@ -7,10 +7,12 @@ $family-primary: "Roboto", $family-sans-serif;
 
 @import "../node_modules/bulma/bulma.sass";
 
+
 body {
   background-image: url(./assets/background.svg);
   background-size: cover;
   background-repeat: repeat-y;
+  min-height: 100vh;
 }
 
 @for $i from 1 through 4 {
@@ -54,14 +56,17 @@ h3 {
 }
 
 .container {
-  margin: 0 25%;
+  margin: 0 14%;
+}
+
+.page-container {
+  padding: 0 7%;
 }
 
 .navbar {
-  width: 80%;
   margin: auto;
   flex-wrap: wrap;
-  
+  background-color: rgba(255, 255, 255, 0.0);
 }
 
 .button {

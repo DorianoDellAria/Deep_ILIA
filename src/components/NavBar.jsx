@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../assets/deep-logo.svg'
 import { Link } from 'react-router-dom'
 
+import { UimAngleRightB as Angle } from './angle'
 
 function NavBar() {
   return (
@@ -18,18 +19,17 @@ function NavBar() {
         </a>
       </div>
       <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              <a className="button is-primary">
-                Sign up
-              </a>
-              <a className="button is-secondary">
-                Log in
-              </a>
-            </div>
+        <div className="navbar-item">
+          <div className="buttons">
+            <a className="button is-secondary">
+              Log in
+            </a>
+            <a className="button is-primary">
+              Sign up <Angle />
+            </a>
           </div>
         </div>
-
+      </div>
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
           <Link className="navbar-item" to={"/"}>
@@ -59,7 +59,7 @@ function NavBar() {
 
         </div>
 
-        
+
       </div>
     </nav>
   )
