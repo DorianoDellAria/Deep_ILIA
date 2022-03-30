@@ -9,8 +9,14 @@ $family-primary: "Roboto", $family-sans-serif;
 
 body {
   background-image: url(./assets/background.svg);
-  height: 100vh;
-  background-size: 1200px;
+  background-size: cover;
+  background-repeat: repeat-y;
+}
+
+@for $i from 1 through 4 {
+  h#{$i}.is-primary  {
+    color: $primary;
+  }
 }
 
 p {
@@ -29,11 +35,7 @@ h1 {
   font-size: 60px;
   line-height: 70px;
   text-align: center;
-  padding: 16vh 0;
-}
-
-h1.is-primary {
-  color: $primary;
+  padding-top: 100px
 }
 
 h2 {
@@ -41,26 +43,18 @@ h2 {
   font-weight: 900;
   font-size: 40px;
   line-height: 47px;
-  text-align: justify;
 }
 
-h2.is-primary {
-  color: $primary;
+h3 {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 25px;
+  line-height: 29px;
+  color: #00366D;
 }
 
 .container {
-  margin: 0 14%;
-}
-
-.header-info {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 23px;
-  text-align: right;
-
-  color: #00366D;
+  margin: 0 27%;
 }
 
 .button {
