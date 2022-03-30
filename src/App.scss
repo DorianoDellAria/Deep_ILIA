@@ -87,10 +87,10 @@ h3 {
   margin-right: 0;
   flex-grow: 1;
   align-items: center;
-  order: 3;
-  flex-shrink: 0;
+  // order: 3;
+  // flex-shrink: 0;
   width: 100%;
-  flex-wrap: wrap-reverse;
+  // flex-wrap: wrap-reverse;
 }
 
 .navbar-start a.navbar-item {
@@ -109,15 +109,22 @@ h3 {
   margin-right: 3px;
 }
 
+.navbar-item img {
+  max-height: 600px;
+  margin-bottom: 26px;
+}
+
 .navbar-start a.navbar-item:nth-child(1) {
   background-color: $primary;
   border-radius: 10px 0px 0px 10px;
 }
 
-.navbar-start a.navbar-item:last-child {
+.navbar-start span.navbar-item:last-child {
   border-radius: 0px 10px 10px 0px;
   margin-right: 0;
   flex-grow: 1;
+  background-color: $secondary;
+  height: 35px;
 }
 
 a.button.is-secondary {

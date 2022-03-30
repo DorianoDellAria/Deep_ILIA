@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/deep-logo.svg'
+import { Link } from 'react-router-dom'
 
 
 function NavBar() {
@@ -7,7 +8,7 @@ function NavBar() {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="#">
-          <img src={logo} width="112" height="28" />
+          <img src={logo} width="289" height="91" />
         </a>
 
         <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -16,37 +17,7 @@ function NavBar() {
           <span aria-hidden="true"></span>
         </a>
       </div>
-
-      <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar-start">
-          <a className="navbar-item">
-            Home
-          </a>
-          <a className="navbar-item">
-            Team
-          </a>
-          <a className="navbar-item">
-            Projects
-          </a>
-          <a className="navbar-item">
-            Publications
-          </a>
-          <a className="navbar-item">
-            Applications &amp; Demos
-          </a>
-          <a className="navbar-item">
-            Events
-          </a>
-          <a className="navbar-item">
-            News
-          </a>
-          <a className="navbar-item">
-
-          </a>
-
-        </div>
-
-        <div className="navbar-end">
+      <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
               <a className="button is-primary">
@@ -58,6 +29,37 @@ function NavBar() {
             </div>
           </div>
         </div>
+
+      <div id="navbarBasicExample" className="navbar-menu">
+        <div className="navbar-start">
+          <Link className="navbar-item" to={"/"}>
+            Home
+          </Link>
+          <Link className="navbar-item" to="#">
+            Team
+          </Link>
+          <Link className="navbar-item" to='/projects'>
+            Projects
+          </Link>
+          <Link className="navbar-item" to="#">
+            Publications
+          </Link>
+          <Link className="navbar-item" to="#">
+            Applications &amp; Demos
+          </Link>
+          <Link className="navbar-item" to="#">
+            Events
+          </Link>
+          <Link className="navbar-item" to="#">
+            News
+          </Link>
+          <span className="navbar-item">
+
+          </span>
+
+        </div>
+
+        
       </div>
     </nav>
   )

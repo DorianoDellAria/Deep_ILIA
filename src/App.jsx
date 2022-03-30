@@ -9,8 +9,8 @@ import Project from './pages/Projects'
 function App() {
   return (<>
     <div className='App'>
-      <NavBar />
       <Router>
+        <NavBar />
         <Routes>
           <Route path='/' element={<MainPage />} />
           <Route path='/projects' element={<Project />} />
