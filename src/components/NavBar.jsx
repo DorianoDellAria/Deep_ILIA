@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/deep-logo.svg'
-
+import { UimAngleRightB as Angle } from './angle'
 
 function NavBar() {
   return (
@@ -53,7 +53,7 @@ function NavBar() {
                 Log in
               </a>
               <a className="button is-primary">
-                Sign up
+                Sign up <Angle/>
               </a>
             </div>
           </div>
