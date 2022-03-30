@@ -54,7 +54,14 @@ h3 {
 }
 
 .container {
-  margin: 0 27%;
+  margin: 0 25%;
+}
+
+.navbar {
+  width: 80%;
+  margin: auto;
+  flex-wrap: wrap;
+  
 }
 
 .button {
@@ -67,4 +74,61 @@ h3 {
   color: white;
   border: 0;
   height: auto;
+}
+
+.navbar-start {
+  margin-right: 0;
+  flex-grow: 1;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-menu {
+  margin-right: 0;
+  flex-grow: 1;
+  align-items: center;
+  order: 3;
+  flex-shrink: 0;
+  width: 100%;
+  flex-wrap: wrap-reverse;
+}
+
+.navbar-start a.navbar-item {
+  background-color: $secondary;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #ffffff;
+  height: 35px;
+  margin-right: 3px;
+}
+
+.navbar-start a.navbar-item:nth-child(1) {
+  background-color: $primary;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.navbar-start a.navbar-item:last-child {
+  border-radius: 0px 10px 10px 0px;
+  margin-right: 0;
+  flex-grow: 1;
+}
+
+a.button.is-secondary {
+  background-color: $secondary;
+
+  :hover & {
+    color: #ffffff;
+  }
+}
+
+.navbar-end div.navbar-item {
+  padding-left: 0;
+  padding-right: 0;
 }
