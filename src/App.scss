@@ -66,7 +66,8 @@ h2.is-primary {
 .navbar {
   width: 80%;
   margin: auto;
-  // justify-content: flex-end;
+  flex-wrap: wrap;
+  
 }
 
 .button {
@@ -85,6 +86,17 @@ h2.is-primary {
   margin-right: 0;
   flex-grow: 1;
   align-items: center;
+  width: 100%;
+}
+
+.navbar-menu {
+  margin-right: 0;
+  flex-grow: 1;
+  align-items: center;
+  order: 3;
+  flex-shrink: 0;
+  width: 100%;
+  flex-wrap: wrap-reverse;
 }
 
 .navbar-start a.navbar-item {
@@ -120,4 +132,9 @@ a.button.is-secondary {
   :hover & {
     color: #ffffff;
   }
+}
+
+.navbar-end div.navbar-item {
+  padding-left: 0;
+  padding-right: 0;
 }
