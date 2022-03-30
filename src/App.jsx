@@ -4,18 +4,22 @@ import NavBar from './components/NavBar'
 
 import './App.scss'
 import MainPage from './pages/MainPage'
-import Project from './pages/Projects'
+import Projects from './pages/Projects'
 
 function App() {
   return (<>
     <div className='App'>
-      <NavBar />
-      <Router>
-        <Routes>
-          <Route path='/' element={<MainPage />} />
-          <Route path='/projects' element={<Project />} />
-        </Routes>
-      </Router>
+      <div className="container">
+        <Router>
+          <NavBar />
+          <div className="page-container">
+            <Routes>
+              <Route path='/' exact element={<MainPage />} />
+              <Route path='/projects' exact element={<Projects />} />
+            </Routes>
+          </div>
+        </Router>
+      </div>
     </div>
   </>
   )

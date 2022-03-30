@@ -5,7 +5,6 @@ import './Projects.scss'
 function Projects() {
   return (<>
     <h1 className="is-primary">Projects</h1>
-    <div className="container">
 
 
       <div className="project">
@@ -90,7 +89,6 @@ function Projects() {
         </div>
       </div>
 
-    </div>
   </>
   )
 }
