@@ -27,6 +27,16 @@
         }
     }
 
+    &-image {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+    }
+
+    p {
+        margin-top: 60px;
+    }
+
     &-members {
         @extend .columns;
 
