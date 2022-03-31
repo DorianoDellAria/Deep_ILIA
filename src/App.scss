@@ -13,7 +13,7 @@ body {
   background-image: url(./assets/background.svg);
   background-repeat: repeat-y;
   min-height: 100vh;
-  background-size: cover;
+  background-size: 100% auto;
 }
 
 @for $i from 1 through 4 {
