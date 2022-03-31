@@ -3,7 +3,8 @@
 
 $primary : #BD0E3A;
 $secondary : #4D4D4D;
-$family-primary: "Roboto", $family-sans-serif;
+$family-primary: "Roboto",
+$family-sans-serif;
 
 @import "../node_modules/bulma/bulma.sass";
 
@@ -12,10 +13,11 @@ body {
   background-image: url(./assets/background.svg);
   background-repeat: repeat-y;
   min-height: 100vh;
+  background-size: cover;
 }
 
 @for $i from 1 through 4 {
-  h#{$i}.is-primary  {
+  h#{$i}.is-primary {
     color: $primary;
   }
 }
@@ -52,10 +54,6 @@ h3 {
   font-size: 25px;
   line-height: 29px;
   color: #00366D;
-}
-
-.container {
-  margin: 0 14%;
 }
 
 .page-container {
