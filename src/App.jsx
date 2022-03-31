@@ -9,8 +9,8 @@ import Projects from './pages/Projects'
 function App() {
   return (<>
     <div className='App'>
-      <div className="container">
-        <Router>
+      <Router>
+        <div className="container is-widescreen">
           <NavBar />
           <div className="page-container">
             <Routes>
@@ -18,8 +18,8 @@ function App() {
               <Route path='/projects' exact element={<Projects />} />
             </Routes>
           </div>
-        </Router>
-      </div>
+        </div>
+      </Router>
     </div>
   </>
   )
