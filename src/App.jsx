@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import './App.scss'
 import MainPage from './pages/MainPage'
 import Projects from './pages/Projects'
+import Team from './pages/Team'
 
 function App() {
   return (<>
@@ -16,6 +17,7 @@ function App() {
             <Routes>
               <Route path='/' exact element={<MainPage />} />
               <Route path='/projects' exact element={<Projects />} />
+              <Route path='/team' exact element={<Team />} />
             </Routes>
           </div>
         </div>

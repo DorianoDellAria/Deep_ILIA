@@ -1,0 +1,50 @@
+@import "../../node_modules/bulma/sass/grid/columns.sass";
+
+
+.team {
+    // TODO fix border color 
+    &-section {
+        @extend .columns;
+        margin: 0;
+        margin-bottom: 0 !important;
+    }
+
+    &-header {
+        @extend .column;
+        text-align: right;
+    }
+
+    &-list {
+        @extend .column;
+        border-left: 2px dashed #949494;
+    }
+
+    &-member {
+        &:first-child{
+            margin-top: 72px;
+        }
+
+        &-info {
+            margin-left: 38px;
+        }
+
+        h4 {
+            font-weight: 700;
+            color: #000;
+            font-size: 30px;
+        }
+
+        display: flex;
+        margin-left: 20px;
+        align-items: center;
+    }
+
+
+
+    h3 {
+        font-weight: 900;
+        padding-right: 7px;
+        margin-right: -16px;
+    } 
+}
+
