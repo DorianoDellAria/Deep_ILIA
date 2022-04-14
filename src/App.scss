@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "../node_modules/bulma/sass/utilities/initial-variables.sass";
 
-$primary : #BD0E3A;
-$secondary : #4D4D4D;
-$family-primary: "Roboto",
-$family-sans-serif;
+@import "./variables.scss";
 
 @import "../node_modules/bulma/bulma.sass";
 

@@ -45,7 +45,7 @@ function Team() {
 function TeamSection({ sectionName, members, color }) {
     const style = {
         color: color,
-        borderRight: `6px solid ${color}`
+        borderRight: `6px solid ${color}`,
     };
     return (
         <div className="team-section">
