@@ -1,5 +1,6 @@
 import React from 'react'
 import './Team.scss'
+import { Link } from 'react-router-dom';
 
 
 //To delete 
@@ -49,10 +50,10 @@ function TeamSection({ sectionName, members, color }) {
     };
     return (
         <div className="team-section">
-            <div className="team-header is-one-quarter">
+            <div className="team-header">
                 <h3 style={style}>{sectionName}</h3>
             </div>
-            <div className="team-list is-three-quarter">
+            <div className="team-list">
                 {
                     members.map((member, index) => <TeamMember key={index} member={member} />)
                 }
@@ -63,15 +64,18 @@ function TeamSection({ sectionName, members, color }) {
 }
 
 function TeamMember({ member }) {
+    // TODO : add icons
     return (
         <div className="team-member">
             <div className="team-image">
                 <img src={member.image} alt="profileImage" />
             </div>
             <div className="team-member-info">
-                <h4>
-                    {member.name}
-                </h4>
+                <Link to="/profile" >
+                    <h4>
+                        {member.name}
+                    </h4>
+                </Link>
                 <p>
                     {member.description}
                 </p>

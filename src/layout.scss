@@ -1,24 +1,27 @@
-@import "../layout.scss";
+@import "../node_modules/bulma/sass/grid/columns.sass";
 
 
-.team {
+%layout {
     &-section {
-        @extend %layout-section;
+        @extend .columns;
+        margin: 0;
+        margin-bottom: 0 !important;
     }
 
     &-header {
-        @extend %layout-header;
-        @extend .is-one-quarter;
-        padding-top: 0;
+        @extend .column;
+        text-align: right;
+        z-index: 1;
     }
 
     &-list {
-        @extend %layout-list;
-        @extend .is-three-quarters;
+        @extend .column;
+        border-left: 2px dashed #949494;
     }
 
+    // TODO duplicated (and useless) : remove
     &-member {
-        &:first-child {
+        &:first-child{
             margin-top: 72px;
         }
 
@@ -43,5 +46,5 @@
         font-weight: 900;
         padding-right: 7px;
         margin-right: -16px;
-    }
+    } 
 }

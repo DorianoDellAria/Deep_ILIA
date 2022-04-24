@@ -6,6 +6,7 @@ import './App.scss'
 import MainPage from './pages/MainPage'
 import Projects from './pages/Projects'
 import Team from './pages/Team'
+import Profile from './pages/Profile'
 
 function App() {
   return (<>
@@ -18,6 +19,7 @@ function App() {
               <Route path='/' exact element={<MainPage />} />
               <Route path='/projects' exact element={<Projects />} />
               <Route path='/team' exact element={<Team />} />
+              <Route path='/profile' element={<Profile />} />
             </Routes>
           </div>
         </div>

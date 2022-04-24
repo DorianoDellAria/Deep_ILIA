@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import "../node_modules/bulma/sass/utilities/initial-variables.sass";
+
 
 @import "./variables.scss";
 
@@ -62,6 +62,78 @@ h3 {
   padding-top: 30px;
   flex-wrap: wrap;
   background-color: rgba(255, 255, 255, 0.0);
+
+  &-start {
+    margin-right: 0;
+    flex-grow: 1;
+    align-items: center;
+    width: 100%;
+
+    a.navbar-item {
+      background-color: $secondary;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 26px;
+      /* identical to box height */
+
+      text-align: center;
+
+      color: #ffffff;
+      height: 35px;
+      margin-right: 3px;
+    }
+  }
+
+  &-menu {
+    margin-right: 0;
+    flex-grow: 1;
+    align-items: center;
+    // order: 3;
+    // flex-shrink: 0;
+    width: 100%;
+    // flex-wrap: wrap-reverse;
+  }
+
+  &-menu.is-active {
+    padding: 0;
+  }
+
+  &-item img {
+    max-height: 600px;
+    margin-bottom: 26px;
+  }
+
+  &-menu.is-active a.navbar-item {
+    margin: 0;
+  }
+
+  &-start a.navbar-item:nth-child(1) {
+    background-color: $primary;
+    border-radius: 10px 0px 0px 10px;
+  }
+
+  &-menu.is-active a.navbar-item:nth-child(1) {
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  &-start span.navbar-item:last-child {
+    border-radius: 0px 10px 10px 0px;
+    margin-right: 0;
+    flex-grow: 1;
+    background-color: $secondary;
+    height: 35px;
+  }
+
+  &-menu.is-active span.navbar-item:last-child {
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  &-end div.navbar-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .button {
@@ -76,82 +148,12 @@ h3 {
   height: auto;
 }
 
-.navbar-start {
-  margin-right: 0;
-  flex-grow: 1;
-  align-items: center;
-  width: 100%;
-}
-
-.navbar-menu {
-  margin-right: 0;
-  flex-grow: 1;
-  align-items: center;
-  // order: 3;
-  // flex-shrink: 0;
-  width: 100%;
-  // flex-wrap: wrap-reverse;
-}
-
-.navbar-menu.is-active {
-  padding: 0;
-}
-
-.navbar-start a.navbar-item {
-  background-color: $secondary;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 26px;
-  /* identical to box height */
-
-  text-align: center;
-
-  color: #ffffff;
-  height: 35px;
-  margin-right: 3px;
-}
-
-.navbar-item img {
-  max-height: 600px;
-  margin-bottom: 26px;
-}
-
-.navbar-menu.is-active a.navbar-item {
-  margin: 0;
-}
-
-.navbar-start a.navbar-item:nth-child(1) {
-  background-color: $primary;
-  border-radius: 10px 0px 0px 10px;
-}
-
-.navbar-menu.is-active a.navbar-item:nth-child(1) {
-  border-radius: 0px 0px 0px 0px;
-}
-
-.navbar-start span.navbar-item:last-child {
-  border-radius: 0px 10px 10px 0px;
-  margin-right: 0;
-  flex-grow: 1;
-  background-color: $secondary;
-  height: 35px;
-}
-
-.navbar-menu.is-active span.navbar-item:last-child {
-  border-radius: 0px 0px 0px 0px;
-}
 
 a.button.is-secondary {
   background-color: $secondary;
 
-  :hover & {
+  &:hover {
     color: #ffffff;
   }
 }
 
-.navbar-end div.navbar-item {
-  padding-left: 0;
-  padding-right: 0;
-}
