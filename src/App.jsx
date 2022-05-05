@@ -7,6 +7,7 @@ import MainPage from './pages/MainPage'
 import Projects from './pages/Projects'
 import Team from './pages/Team'
 import Profile from './pages/Profile'
+import Footer from './components/Footer'
 
 function App() {
   return (<>
@@ -23,6 +24,7 @@ function App() {
             </Routes>
           </div>
         </div>
+          {/* <Footer /> */}
       </Router>
     </div>
   </>

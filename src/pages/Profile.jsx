@@ -1,6 +1,24 @@
 import React from 'react'
 import './Profile.scss'
 
+const profile = {
+    Biography: "Sidi Ahmed Mahmoudi a des activités liées aux domaines de calcul haute performance (HPC), Cloud computing, Big Data, Data Science, traitement multimédia et intelligence artificielle. Il a présenté sa thèse de doctorat en 2013, portant sur l’exploitation efficace des plateformes parallèles et hétérogènes pour le traitement d’objets multimédia. Depuis la fin de sa thèse, il a travaillé sur différents projets et applications médicales (aide au diagnostic des  maladies  de  scoliose  et d’ostéoporose, suivi de mouvements cardiaques, etc.) ainsi que des applications d’analyse d’évènements de sports (ralenti, résumé et highlights, etc.). Le point commun entre ces projets est l’utilisation des techniques d’apprentissage de données (Machine Learning) pour améliorer la précision des résultats. Durant les deux dernières années, Sidi Ahmed Mahmoudi travaillé sur l’exploitation des ressources distantes (cloud) pour faire face au défi du traitement massif de données. L'ensemble de ses travaux de recherche sont publiés dans une dizaine de revues internationales, sept chapitres de livre et plus de quanrante conférences et workshops internationaux.",
+    Publications: [
+        {
+            title: "A Machine Learning Approach to Predicting the Heart Disease Risk",
+            year: "2019",
+            authors: "Sidi Ahmed Mahmoudi, Yannick Le Roux, Olivier Le Roux",
+            journal: "Journal of the American Statistical Association",
+        },
+        {
+            title: "A Machine Learning Approach to Predicting the Heart Disease Risk",
+            year: "2019",
+            authors: "Sidi Ahmed Mahmoudi, Yannick Le Roux, Olivier Le Roux",
+            journal: "Journal of the American Statistical Association",
+        }
+    ]
+}
+
 function Profile({ user }) {
     user = {
         name: 'John Doe',
@@ -9,22 +27,8 @@ function Profile({ user }) {
     return (
         <>
             <Banner name={user.name} link={user.link} />
-            <div className='profile'>
-                <div className="profile-header">
-                    <h3>
-                        Biography
-                    </h3>
-                </div>
-
-                <div className="profile-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut expedita deserunt esse in porro optio culpa ipsam sint? Tempore ut iste cum placeat amet fuga. Eum velit est ex itaque.
-                    Dolores exercitationem esse quasi ex officia laudantium corporis iusto repellat ipsam magni iste aliquid eum quas asperiores corrupti saepe soluta, provident, sit beatae modi temporibus labore. Soluta excepturi labore totam.
-                    Tempore repudiandae, debitis beatae sit suscipit eius facilis asperiores, quo rem fugiat blanditiis, repellat laborum vero vel. Dignissimos, vero praesentium. Eaque provident obcaecati nisi odio, incidunt dicta minus officiis. Rerum?
-                    Libero cum deserunt totam dolore unde, mollitia doloremque repellat sequi ipsum autem accusantium error similique sunt, aliquam ratione consequatur veniam eligendi, dignissimos consequuntur maiores ullam. Provident, dolorum animi. Facilis, incidunt!
-                    Veritatis quasi corporis, nisi nesciunt accusamus totam illo dignissimos expedita ipsum recusandae vero quo non impedit deserunt ratione dolorem! Excepturi perferendis fugit esse dolor corrupti earum tempora, repudiandae a vel?
-                    Repellat eaque rerum, cum iste voluptatibus, asperiores debitis facilis tenetur minus exercitationem nostrum velit aspernatur in? Nam, numquam vel expedita accusamus sed sint, reprehenderit distinctio eos corrupti deleniti facere modi.
-                </div>
-            </div>
+            <ProfileElement header="Biography" description={profile.Biography} />
+            <Publications  publications={profile.Publications} />
         </>
     );
 }
@@ -38,6 +42,38 @@ function Banner({ name, link }) {
                 <img src={url} alt="" width={261} />
             </div>
         </div>
+    );
+}
+
+function ProfileElement({ header, description }) {
+    return (
+        <div className="profile">
+            <div className="profile-header">
+                <h3>
+                    {header}
+                </h3>
+            </div>
+            <div className="profile-description">
+                {description}
+            </div>
+        </div>
+    );
+}
+
+function Publications({ publications }) {
+    let desc = publications.map((publication, index) => <PublicationItem key={index} publication={publication} />)
+    return (
+        <ProfileElement header="Publications" description={desc} />
+    );
+}
+
+function PublicationItem({ publication }) {
+    return (
+        <>
+            <b>{publication.title}</b> in {publication.journal} ({publication.year}) {publication.authors} 
+            <br />
+            <br />
+        </>
     );
 }
 
