@@ -1,0 +1,47 @@
+@import "../layout.scss";
+
+
+.team {
+    &-section {
+        @extend %layout-section;
+    }
+
+    &-header {
+        @extend %layout-header;
+        @extend .is-one-quarter;
+        padding-top: 0;
+    }
+
+    &-list {
+        @extend %layout-list;
+        @extend .is-three-quarters;
+    }
+
+    &-member {
+        &:first-child {
+            margin-top: 72px;
+        }
+
+        &-info {
+            margin-left: 38px;
+        }
+
+        h4 {
+            font-weight: 700;
+            color: rgb(34, 37, 44);
+            font-size: 30px;
+        }
+
+        display: flex;
+        margin-left: 20px;
+        align-items: center;
+    }
+
+
+
+    h3 {
+        font-weight: 900;
+        padding-right: 7px;
+        margin-right: -16px;
+    }
+}

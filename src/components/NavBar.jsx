@@ -32,13 +32,13 @@ function NavBar() {
       </div>
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <Link className="navbar-item" to={"/"}>
+          <Link className="navbar-item" to="/">
             Home
           </Link>
-          <Link className="navbar-item" to="#">
+          <Link className="navbar-item" to="/team">
             Team
           </Link>
-          <Link className="navbar-item" to='/projects'>
+          <Link className="navbar-item" to="/projects">
             Projects
           </Link>
           <Link className="navbar-item" to="#">
