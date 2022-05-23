@@ -1,69 +1,69 @@
 @import "../../node_modules/bulma/sass/grid/columns.sass";
 
 .project {
-    margin-top: 100px;
+  margin-top: 100px;
 
-    &-header {
-        @extend .columns;
-        align-items: center;
+  &-header {
+    @extend .columns;
+    align-items: center;
 
-        h2 {
-            @extend .column;
-            @extend .is-8;
-        }      
+    h2 {
+      @extend .column;
+      @extend .is-8;
+    }      
 
-        &-info {
-            @extend .column;
-            @extend .is-3;
-            @extend .is-offset-1;
+    &-info {
+      @extend .column;
+      @extend .is-3;
+      @extend .is-offset-1;
 
-            font-style: normal;
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 23px;
-            text-align: right;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 23px;
+      text-align: right;
 
-            color: #00366D;
-        }
+      color: #00366D;
+    }
+  }
+
+  &-image {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    margin-top: 60px;
+  }
+
+  &-members {
+    @extend .columns;
+
+    &-left {
+      @extend .column;
+      @extend .is-5;
     }
 
-    &-image {
-        margin-top: 60px;
-        display: flex;
-        justify-content: center;
+    &-right {
+      @extend .column;
+      @extend .is-5;
+      @extend .is-offset-2;
     }
 
-    p {
-        margin-top: 60px;
+    &-type {
+      margin-top: 26px;
     }
 
-    &-members {
-        @extend .columns;
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
 
-        &-left {
-            @extend .column;
-            @extend .is-5;
-        }
-
-        &-right {
-            @extend .column;
-            @extend .is-5;
-            @extend .is-offset-2;
-        }
-
-        &-type {
-            margin-top: 26px;
-        }
-
-        &-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-
-            img {
-                margin-right: 28px;
-                margin-top: 18px;
-            }
-        }
+      img {
+        margin-right: 28px;
+        margin-top: 18px;
+      }
     }
+  }
 }
