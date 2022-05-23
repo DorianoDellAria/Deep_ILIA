@@ -13,7 +13,7 @@ function App() {
   return (<>
     <div className='App'>
       <Router>
-        <div className="container is-widescreen">
+        <div className="container is-widescreen page">
           <NavBar />
           <div className="page-container">
             <Routes>
@@ -24,7 +24,7 @@ function App() {
             </Routes>
           </div>
         </div>
-          {/* <Footer /> */}
+        <Footer />
       </Router>
     </div>
   </>
