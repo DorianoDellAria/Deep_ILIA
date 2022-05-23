@@ -8,4 +8,6 @@ urlpatterns = [
     path('get_user_social_networks/', views.get_user_social_networks, name='get_user_social_networks'),
     path('get_projects/', views.get_projects, name='get_projects'),
     path('get_publications/', views.get_publications, name='get_publications'),
+    path('create_user/', views.create_user, name='create_user'),
+    path('create_project/', views.create_project, name='create_project'),
 ]

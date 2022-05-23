@@ -2,7 +2,9 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import User, Project, Publication, SocialNetwork
 from .serializers import UserSerializer, ProjectSerializer, PublicationSerializer, SocialNetworkSerializer
+import logging
 
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -11,6 +13,17 @@ def get_users(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def create_user(request):
+    # logger.error('create_user')
+    serializer = UserSerializer(data=request.data)
+    logger.error(request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
 
 
 @api_view(['POST'])
@@ -50,8 +63,19 @@ def get_projects(request):
     return Response(serializer.data)
 
 
+@api_view(['POST'])
+def create_project(request):
+    serializer = ProjectSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
+
+
 @api_view(['GET'])
 def get_publications(request):
     publications = Publication.objects.all()
     serializer = PublicationSerializer(publications, many=True)
     return Response(serializer.data)
+
+

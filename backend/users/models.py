@@ -19,7 +19,7 @@ class Publication(models.Model):
 
 
 class SocialNetwork(models.Model):
-    UserId = models.ForeignKey(User, on_delete=models.CASCADE)
+    UserId = models.ForeignKey(User, on_delete=models.CASCADE, related_name='social_networks')
     Type = models.CharField(max_length=50)
     Link = models.CharField(max_length=50)
 
