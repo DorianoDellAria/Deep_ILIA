@@ -14,14 +14,19 @@ const professor = [
 // todelete
 const students = [
     {
-        name: 'Aurélie Cools',
+        name: 'John Doe',
         description: 'Student in Computer Science and Engineering',
         image: "./src/assets/profiles/image4.png",
     },
     {
-        name: 'Jean-Sébastien Lérat',
+        name: 'John Doe',
         description: 'Student in Computer Science and Engineering',
         image: "./src/assets/profiles/image5.png",
+    },
+    {
+        name: 'John Doe',
+        description: 'Student in Computer Science and Engineering',
+        image: "./src/assets/profiles/image6.png",
     }
 ];
 

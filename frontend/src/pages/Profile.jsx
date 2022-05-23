@@ -15,7 +15,25 @@ const profile = {
             year: "2019",
             authors: "Sidi Ahmed Mahmoudi, Yannick Le Roux, Olivier Le Roux",
             journal: "Journal of the American Statistical Association",
-        }
+        },
+        // {
+        //     title: "A Machine Learning Approach to Predicting the Heart Disease Risk",
+        //     year: "2019",
+        //     authors: "Sidi Ahmed Mahmoudi, Yannick Le Roux, Olivier Le Roux",
+        //     journal: "Journal of the American Statistical Association",
+        // },
+        // {
+        //     title: "A Machine Learning Approach to Predicting the Heart Disease Risk",
+        //     year: "2019",
+        //     authors: "Sidi Ahmed Mahmoudi, Yannick Le Roux, Olivier Le Roux",
+        //     journal: "Journal of the American Statistical Association",
+        // },
+        // {
+        //     title: "A Machine Learning Approach to Predicting the Heart Disease Risk",
+        //     year: "2019",
+        //     authors: "Sidi Ahmed Mahmoudi, Yannick Le Roux, Olivier Le Roux",
+        //     journal: "Journal of the American Statistical Association",
+        // }
     ]
 }
 
@@ -28,7 +46,7 @@ function Profile({ user }) {
         <>
             <Banner name={user.name} link={user.link} />
             <ProfileElement header="Biography" description={profile.Biography} />
-            <Publications  publications={profile.Publications} />
+            <Publications publications={profile.Publications} />
         </>
     );
 }
@@ -70,7 +88,7 @@ function Publications({ publications }) {
 function PublicationItem({ publication }) {
     return (
         <>
-            <b>{publication.title}</b> in {publication.journal} ({publication.year}) {publication.authors} 
+            <b>{publication.title}</b> in {publication.journal} ({publication.year}) {publication.authors}
             <br />
             <br />
         </>
