@@ -5,12 +5,18 @@
 
 @import "../node_modules/bulma/bulma.sass";
 
-
 body {
   background-image: url(./assets/background.svg);
   background-repeat: repeat-y;
   min-height: 100vh;
   background-size: 100% auto;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
 }
 
 @for $i from 1 through 4 {
@@ -155,25 +161,4 @@ a.button.is-secondary {
   &:hover {
     color: #ffffff;
   }
-}
-
-.footer {
-  //set the footer to the bottom of the page
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-
-
-  background-color: $secondary;
-  padding: 0;
-  margin: 0;
-  color: #ffffff;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 26px;
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
 }
