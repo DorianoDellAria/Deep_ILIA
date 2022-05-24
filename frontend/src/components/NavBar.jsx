@@ -41,7 +41,7 @@ function NavBar() {
           <Link className="navbar-item" to="/projects">
             Projects
           </Link>
-          <Link className="navbar-item" to="#">
+          <Link className="navbar-item" to="/publications">
             Publications
           </Link>
           <Link className="navbar-item" to="#">

@@ -1,18 +1,20 @@
 import React, { useMemo, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
+
 import './App.scss'
+import Footer from './components/Footer'
+
 import MainPage from './pages/MainPage'
 import Projects from './pages/Projects'
 import Team from './pages/Team'
 import Profile from './pages/Profile'
-import Footer from './components/Footer'
+import Publications from './pages/Publications'
 import Login from './pages/Login'
 import { useQuery } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import CredentialContext from './CredentialContext'
 import * as api from './api'
-
 
 
 function App() {
@@ -50,6 +52,7 @@ function App() {
                 <Route path='/projects' exact element={<Projects />} />
                 <Route path='/team' exact element={<Team />} />
                 <Route path='/profile' element={<Profile />} />
+                <Route path='/publications' element={<Publications />} />
                 <Route path='/login' element={<Login setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />} />
               </Routes>
             </div>

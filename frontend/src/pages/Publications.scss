@@ -1,0 +1,55 @@
+@import "../variables.scss";
+@import "../layout.scss";
+
+.publications {
+    @extend %layout-section;
+    // margin-right: -60px;
+
+    &-header {
+        @extend %layout-header;
+        @extend .is-2;
+        @extend .is-1-mobile;
+        padding-top: 42px;
+
+    }
+
+    &-elements {
+        @extend %layout-list;
+        @extend .is-8;
+        @extend .is-12-mobile;
+        padding-top: 42px;
+        text-align: justify;
+        display: block;
+        // width: 100%;
+    }
+
+    h3 {
+        font-weight: 900;
+        padding-right: 7px;
+        margin-right: -16px;
+        color: $neutral;
+        border-right: 6px solid $neutral;
+    }
+
+}
+
+.publication {
+    margin-bottom: 30px;
+
+
+
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0em;
+
+
+    &-title {
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 23px;
+        letter-spacing: 0em;
+    }
+}
