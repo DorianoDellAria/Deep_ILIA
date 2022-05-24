@@ -4,6 +4,7 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth.admin import UserAdmin
 # Register your models here.
 
+
 class CustomUserAdmin(UserAdmin):
     model = User
     add_form = CustomUserCreationForm
@@ -15,9 +16,11 @@ class CustomUserAdmin(UserAdmin):
                 'fields': (
                     'Summary',
                     'Biography',
+                    'Orbi_url',
                 )
             }
         )
     )
+
 
 admin.site.register(User, CustomUserAdmin)
