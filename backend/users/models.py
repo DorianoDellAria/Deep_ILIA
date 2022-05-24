@@ -1,13 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
 
-class User(models.Model):
-    Name_surname = models.CharField(max_length=50)
+class User(AbstractUser):
     Summary = models.CharField(max_length=200)
     Biography = models.CharField(max_length=200)
-    Is_admin = models.BooleanField(default=False)
 
 
 class Publication(models.Model):
@@ -30,5 +29,5 @@ class Project(models.Model):
     Description = models.CharField(max_length=200)
     Status = models.CharField(max_length=50)
     Date = models.DateField(null=True)
-    ProjectMembers = models.ManyToManyField(User)
+    ProjectMembers = models.ManyToManyField(User, related_name='projects')
 

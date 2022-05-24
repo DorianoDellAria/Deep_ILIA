@@ -19,7 +19,7 @@ def get_users(request):
 def create_user(request):
     # logger.error('create_user')
     serializer = UserSerializer(data=request.data)
-    logger.error(request.data)
+    # logger.error(request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=201)
