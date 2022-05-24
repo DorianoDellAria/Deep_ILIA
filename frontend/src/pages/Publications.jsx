@@ -16,7 +16,8 @@ function Publication({ citation, link }) {
 
   return <div className="publication">
     <span className="publication-title">{title}</span>
-    {" " + authors}
+    {" " + authors} <br />
+    <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
   </div>
 }
 
