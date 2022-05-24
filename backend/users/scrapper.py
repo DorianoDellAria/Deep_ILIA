@@ -1,5 +1,4 @@
-import setup
-from users.models import Publication, User
+from .models import Publication, User
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 from bs4 import BeautifulSoup
@@ -82,9 +81,5 @@ def update_users_publications():
                 UserId=user, Citation=Citation, Link=Link)
 
 
-def main():
-    update_users_publications()
-
-
 if __name__ == '__main__':
-    main()
+    update_users_publications()

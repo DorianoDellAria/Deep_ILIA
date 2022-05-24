@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,10 @@ SIMPLE_JWT = {
 
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+CRONJOBS = [
+    ('*/5 * * * *', 'users.scrapper.update_users_publications')
+]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
