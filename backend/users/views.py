@@ -1,5 +1,6 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from .models import User, Project, Publication, SocialNetwork
 from .serializers import UserSerializer, ProjectSerializer, PublicationSerializer, SocialNetworkSerializer
 import logging
@@ -64,6 +65,7 @@ def get_projects(request):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_project(request):
     serializer = ProjectSerializer(data=request.data)
     if serializer.is_valid():
