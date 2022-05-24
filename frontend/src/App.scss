@@ -158,7 +158,7 @@ h3 {
 a.button.is-secondary {
   background-color: $secondary;
 
-  &:hover {
+  &:hover, &:focus {
     color: #ffffff;
   }
 }

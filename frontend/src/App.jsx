@@ -8,6 +8,9 @@ import Projects from './pages/Projects'
 import Team from './pages/Team'
 import Profile from './pages/Profile'
 import Footer from './components/Footer'
+import Login from './pages/Login'
+
+
 
 function App() {
   return (<>
@@ -21,6 +24,7 @@ function App() {
               <Route path='/projects' exact element={<Projects />} />
               <Route path='/team' exact element={<Team />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/login' element={<Login />} />
             </Routes>
           </div>
         </div>
