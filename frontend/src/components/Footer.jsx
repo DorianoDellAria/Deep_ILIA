@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Footer.scss"
+import { Link } from 'react-router-dom'
 
 function Footer() {
     return (
@@ -48,21 +49,31 @@ function Footer() {
                     </div>
                     <div className="footer-content-right">
                         <h3>RESSOURCES</h3>
-                        <div className="recource">
-                            Projects
-                        </div>
-                        <div className="recource">
-                            Publications
-                        </div>
-                        <div className="recource">
-                            Application
-                        </div>
-                        <div className="recource">
-                            Events
-                        </div>
-                        <div className="recource">
-                            News
-                        </div>
+                        <Link to="/projects">
+                            <div className="recource">
+                                Projects
+                            </div>
+                        </Link>
+                        <Link to="/publications">
+                            <div className="recource">
+                                Publications
+                            </div>
+                        </Link>
+                        <Link to="#">
+                            <div className="recource">
+                                Application
+                            </div>
+                        </Link>
+                        <Link to="#">
+                            <div className="recource">
+                                Events
+                            </div>
+                        </Link>
+                        <Link to="#">
+                            <div className="recource">
+                                News
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
