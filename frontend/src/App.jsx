@@ -12,6 +12,8 @@ import Projects from './pages/Projects'
 import Team from './pages/Team'
 import Profile from './pages/Profile'
 import Publications from './pages/Publications'
+import Login from './pages/Login'
+
 
 function App() {
   return (<>
@@ -26,6 +28,7 @@ function App() {
               <Route path='/team' exact element={<Team />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/publications' element={<Publications />} />
+              <Route path='/login' element={<Login />} />
             </Routes>
           </div>
         </div>

@@ -21,9 +21,9 @@ function NavBar() {
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
-            <a className="button is-secondary">
+            <Link className="button is-secondary" to="/login">
               Log in
-            </a>
+            </Link>
             <a className="button is-primary">
               Sign up <Angle />
             </a>
