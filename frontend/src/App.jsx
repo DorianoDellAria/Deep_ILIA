@@ -1,13 +1,17 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import NavBar from './components/NavBar'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import './App.scss'
+
+import NavBar from './components/NavBar'
+import Footer from './components/Footer'
+
 import MainPage from './pages/MainPage'
 import Projects from './pages/Projects'
 import Team from './pages/Team'
 import Profile from './pages/Profile'
-import Footer from './components/Footer'
+import Publications from './pages/Publications'
 
 function App() {
   return (<>
@@ -21,12 +25,14 @@ function App() {
               <Route path='/projects' exact element={<Projects />} />
               <Route path='/team' exact element={<Team />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/publications' element={<Publications />} />
             </Routes>
           </div>
         </div>
         <Footer />
       </Router>
     </div>
+    <ReactQueryDevtools initialIsOpen={false} />
   </>
   )
 }

@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
+
 @api_view(['GET'])
 def get_users(request):
     users = User.objects.all()
@@ -27,12 +28,9 @@ def create_user(request):
     return Response(serializer.errors, status=400)
 
 
-@api_view(['POST'])
-def get_user_publications(request):
-    user_id = request.data.get('user_id')
-    if not user_id:
-        return Response({'error': 'user_id is required'}, status=400)
-    publications = User.objects.get(id=user_id).publication_set.all()
+@api_view(['GET'])
+def get_user_publications(request, username):
+    publications = User.objects.get(username=username).publication_set.all()
     serializer = PublicationSerializer(publications, many=True)
     return Response(serializer.data)
 
@@ -79,5 +77,3 @@ def get_publications(request):
     publications = Publication.objects.all()
     serializer = PublicationSerializer(publications, many=True)
     return Response(serializer.data)
-
-
