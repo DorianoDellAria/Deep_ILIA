@@ -1,5 +1,5 @@
 import setup
-from users.models import User
+from users.models import Publication, User
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 from bs4 import BeautifulSoup
@@ -16,23 +16,22 @@ def get_uid(orbi_url):
     return uids[0] if uids else None
 
 
-def get_user_publications(orbi_url):
+def get_user_page(base_url, uid):
     """
-    Scraps the publications of a user from the ORBI website.
+    Returns the user's page.
     """
-    base_url = 'https://orbi.umons.ac.be/profile'
-    uid = get_uid(orbi_url)
-
-    if not uid:
-        return []
-
-    # Get the user's page
     url = base_url + '?uid=' + uid
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Get the publications
-    publications_div = soup.find('div',  {'id': 'publications'})
+    return soup
+
+
+def get_publications(user_page):
+    """
+    Returns the user's publications from the user's page.
+    """
+    publications_div = user_page.find('div',  {'id': 'publications'})
 
     if not publications_div:
         return []
@@ -46,8 +45,45 @@ def get_user_publications(orbi_url):
     return list(zip(citations, links))
 
 
+def get_user_publications(orbi_url):
+    """
+    Scraps the publications of a user from the ORBI website.
+    """
+    base_url = 'https://orbi.umons.ac.be/profile'
+    uid = get_uid(orbi_url)
+
+    if not uid:
+        return []
+
+    # Get the user's page
+    user_page = get_user_page(base_url, uid)
+
+    # Get the publications
+    publications = get_publications(user_page)
+
+    return publications
+
+
+def update_users_publications():
+    """
+    Updates the publications of all the users.
+    """
+    users = User.objects.all()
+
+    for user in users:
+        orbi_url = user.Orbi_url
+        if not orbi_url:
+            continue
+
+        publications = get_user_publications(orbi_url)
+
+        for Citation, Link in publications:
+            Publication.objects.update_or_create(
+                UserId=user, Citation=Citation, Link=Link)
+
+
 def main():
-    print(get_user_publications('https://orbi.umons.ac.be/profile?uid=530391'))
+    update_users_publications()
 
 
 if __name__ == '__main__':
