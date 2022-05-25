@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 //To delete 
 const professor = [
     {
-        name: 'Prof. Sidi Ahmed Mahmoudi',
+        username: 'Sidi',
         description: 'Professor in Computer Science and Engineering',
         image: "./src/assets/profiles/image3.png",
     }
@@ -14,17 +14,17 @@ const professor = [
 // todelete
 const students = [
     {
-        name: 'John Doe',
+        username: 'John Doe',
         description: 'Student in Computer Science and Engineering',
         image: "./src/assets/profiles/image4.png",
     },
     {
-        name: 'John Doe',
+        username: 'John Doe',
         description: 'Student in Computer Science and Engineering',
         image: "./src/assets/profiles/image5.png",
     },
     {
-        name: 'John Doe',
+        username: 'John Doe',
         description: 'Student in Computer Science and Engineering',
         image: "./src/assets/profiles/image6.png",
     }
@@ -76,9 +76,9 @@ function TeamMember({ member }) {
                 <img src={member.image} alt="profileImage" />
             </div>
             <div className="team-member-info">
-                <Link to="/profile" >
+                <Link to={"/profile/" + member.username}>
                     <h4>
-                        {member.name}
+                        {member.username}
                     </h4>
                 </Link>
                 <p>

@@ -28,7 +28,8 @@ class User(AbstractUser):
 
 
 class Publication(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='publications')
     citation = models.CharField(max_length=600)
     link = models.CharField(max_length=100)
 

@@ -1,5 +1,9 @@
 import React from 'react'
 import './Profile.scss'
+import { useParams } from 'react-router-dom';
+import Publication from '../components/Publication'
+import { useQuery } from 'react-query'
+import { getUser } from '../api'
 
 const profile = {
     Biography: "Sidi Ahmed Mahmoudi a des activités liées aux domaines de calcul haute performance (HPC), Cloud computing, Big Data, Data Science, traitement multimédia et intelligence artificielle. Il a présenté sa thèse de doctorat en 2013, portant sur l’exploitation efficace des plateformes parallèles et hétérogènes pour le traitement d’objets multimédia. Depuis la fin de sa thèse, il a travaillé sur différents projets et applications médicales (aide au diagnostic des  maladies  de  scoliose  et d’ostéoporose, suivi de mouvements cardiaques, etc.) ainsi que des applications d’analyse d’évènements de sports (ralenti, résumé et highlights, etc.). Le point commun entre ces projets est l’utilisation des techniques d’apprentissage de données (Machine Learning) pour améliorer la précision des résultats. Durant les deux dernières années, Sidi Ahmed Mahmoudi travaillé sur l’exploitation des ressources distantes (cloud) pour faire face au défi du traitement massif de données. L'ensemble de ses travaux de recherche sont publiés dans une dizaine de revues internationales, sept chapitres de livre et plus de quanrante conférences et workshops internationaux.",
@@ -37,22 +41,29 @@ const profile = {
     ]
 }
 
-function Profile({ user }) {
-    user = {
-        name: 'John Doe',
+function Profile() {
+    const { username } = useParams();
+    const { data: user, isLoading } = useQuery(['user', username], () => getUser(username));
+    const testUser = {
+        username: username,
         link: 'google.com'
     }
+
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+
     return (
         <>
-            <Banner name={user.name} link={user.link} />
-            <ProfileElement header="Biography" description={profile.Biography} />
-            <Publications publications={profile.Publications} />
+            <Banner name={username} link={testUser.link} />
+            <ProfileElement header="Biography" description={user.biography} />
+            <Publications publications={user.publications} />
         </>
     );
 }
 
 function Banner({ name, link }) {
-    const url = "./src/assets/profiles/john_doe.png";
+    const url = "/src/assets/profiles/john_doe.png";
     return (
         <div className="banner">
             <div className="banner-content">
@@ -79,19 +90,9 @@ function ProfileElement({ header, description }) {
 }
 
 function Publications({ publications }) {
-    let desc = publications.map((publication, index) => <PublicationItem key={index} publication={publication} />)
+    let desc = publications.map((pub) => <Publication citation={pub.citation} link={pub.link} key={pub.id} />);
     return (
         <ProfileElement header="Publications" description={desc} />
-    );
-}
-
-function PublicationItem({ publication }) {
-    return (
-        <>
-            <b>{publication.title}</b> in {publication.journal} ({publication.year}) {publication.authors}
-            <br />
-            <br />
-        </>
     );
 }
 

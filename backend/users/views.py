@@ -17,6 +17,13 @@ def get_users(request):
     return Response(serializer.data)
 
 
+@api_view(['GET'])
+def get_user(request, username):
+    user = User.objects.get(username=username)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+
+
 @api_view(['POST'])
 def create_user(request):
     # logger.error('create_user')

@@ -8,12 +8,17 @@ const request = axios.create({
     }
 });
 
+export async function getUser(username) {
+    const response = await request.get(`get_user/${username}`);
+    return response.data;
+}
+
 export async function getPublications() {
     const response = await request.get('/get_publications');
     return response.data;
 }
 
-export async function getPserPublications(username) {
+export async function getUserPublications(username) {
     const response = await request.get('/get_publications/' + username);
     return response.data;
 }

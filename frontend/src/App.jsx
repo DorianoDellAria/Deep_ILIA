@@ -14,7 +14,6 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 
 import { useQuery } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import CredentialContext from './CredentialContext'
 import * as api from './api'
 
@@ -59,7 +58,7 @@ function App() {
                 <Route path='/' exact element={<MainPage />} />
                 <Route path='/projects' exact element={<Projects />} />
                 <Route path='/team' exact element={<Team />} />
-                <Route path='/profile' element={<Profile />} />
+                <Route path='/profile/:username' element={<Profile />} />
                 <Route path='/publications' element={<Publications />} />
                 <Route path='/login' element={<Login setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />} />
                 <Route path='/signup' element={<Signup />} />
@@ -68,7 +67,6 @@ function App() {
           </div>
           <Footer />
         </Router>
-        <ReactQueryDevtools initialIsOpen={false} />
       </CredentialContext.Provider>
     </div>
   )
