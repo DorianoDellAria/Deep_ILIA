@@ -62,7 +62,7 @@ function App() {
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/publications' element={<Publications />} />
                 <Route path='/login' element={<Login setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />} />
-                <Route path='/signup' element={<Signup />} />
+                <Route path='/signup' element={<Signup setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />}  />
               </Routes>
             </div>
           </div>
