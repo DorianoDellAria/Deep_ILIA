@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useCallback } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 
@@ -11,6 +11,8 @@ import Team from './pages/Team'
 import Profile from './pages/Profile'
 import Publications from './pages/Publications'
 import Login from './pages/Login'
+import Signup from './pages/Signup'
+
 import { useQuery } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import CredentialContext from './CredentialContext'
@@ -29,6 +31,12 @@ function App() {
     username: username,
   }), [access, isLoged, username])
 
+  const logout = useCallback(() => {
+    setAccess('')
+    setRefresh('')
+    setIsLoged(false)
+    setUsername('')
+  }, [setAccess, setRefresh, setIsLoged, setUsername])
 
   useQuery('refresh', () => api.refreshToken(refresh), {
     onSuccess: (data) => {
@@ -45,7 +53,7 @@ function App() {
       <CredentialContext.Provider value={context}>
         <Router>
           <div className="container is-widescreen page">
-            <NavBar />
+            <NavBar logout={logout} />
             <div className="page-container">
               <Routes>
                 <Route path='/' exact element={<MainPage />} />
@@ -54,6 +62,7 @@ function App() {
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/publications' element={<Publications />} />
                 <Route path='/login' element={<Login setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />} />
+                <Route path='/signup' element={<Signup />} />
               </Routes>
             </div>
           </div>

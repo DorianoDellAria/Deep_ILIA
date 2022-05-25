@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import * as api from '../api'
 import './Login.scss'
 
 function Login({ setAccess, setRefresh, setIsLoged, setUsername }) {
     const [localUsername, setLocalUsername] = useState('')
     const [password, setPassword] = useState('')
+    let navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -13,6 +15,7 @@ function Login({ setAccess, setRefresh, setIsLoged, setUsername }) {
         setRefresh(refresh)
         setUsername(localUsername)
         setIsLoged(true)
+        navigate(-1, { replace: true })
     }
 
 

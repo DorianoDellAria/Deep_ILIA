@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import logo from '../assets/deep-logo.svg'
 import { Link } from 'react-router-dom'
+import CredentialContext from '../CredentialContext'
 
 import { UimAngleRightB as Angle } from './angle'
+import './NavBar.scss'
 
-function NavBar() {
+function NavBar({ logout }) {
+
+  const { isLoged, username } = useContext(CredentialContext)
+
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -21,12 +26,26 @@ function NavBar() {
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
-            <Link className="button is-secondary" to="/login">
-              Log in
-            </Link>
-            <a className="button is-primary">
-              Sign up <Angle />
-            </a>
+            {isLoged ?
+              <>
+                <div className='username'>
+                  {username}
+                </div>
+                <button className="button is-primary" onClick={logout} >
+                  Disconnect
+                </button>
+
+              </>
+              :
+              <>
+                <Link className="button is-secondary" to="/login">
+                  Log in
+                </Link>
+                <Link className="button is-primary" to="/signup">
+                  Sign up <Angle />
+                </Link>
+              </>
+            }
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@ function Publication({ citation, link }) {
 
 function Publications() {
 
-  const { data: publications } = useQuery('publications', getPublications)
+  const { data: publications, isLoading } = useQuery('publications', getPublications)
 
   return <>
     <h1 className="is-primary">Publications</h1>
@@ -32,7 +32,7 @@ function Publications() {
         <h3>Publications</h3>
       </div>
       <div className="publications-elements">
-        {publications?.map((publication) => <Publication key={publication.id} link={publication.Link} citation={publication.Citation}></Publication>)}
+        {isLoading ? "loading..." :publications?.map((publication) => <Publication key={publication.id} link={publication.Link} citation={publication.Citation}></Publication>)}
       </div>
     </div>
   </>
