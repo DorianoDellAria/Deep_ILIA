@@ -17,6 +17,7 @@ class CustomUserAdmin(UserAdmin):
                     'Summary',
                     'Biography',
                     'Orbi_url',
+                    'profile_pic',
                 )
             }
         )
