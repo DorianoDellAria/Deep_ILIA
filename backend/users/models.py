@@ -1,5 +1,18 @@
+import profile
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django_resized import ResizedImageField
+
+import os
+from uuid import uuid4
+
+
+def wrapper(instance, filename):
+    ext = filename.split('.')[-1]
+    # get filename
+    filename = '{}.{}'.format(uuid4().hex, ext)
+    # return the whole path to the file
+    return os.path.join('profile_pics', filename)
 
 # Create your models here.
 
@@ -8,6 +21,10 @@ class User(AbstractUser):
     Summary = models.CharField(max_length=200)
     Biography = models.CharField(max_length=200)
     Orbi_url = models.CharField(max_length=200)
+    profile_pic = ResizedImageField(
+        size=[117, 117], upload_to=wrapper, crop=['middle', 'center'], blank=True, null=True)
+    # profile_pic = models.ImageField(
+    #     upload_to=wrapper, blank=True)
 
 
 class Publication(models.Model):

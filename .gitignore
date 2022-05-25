@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .vscode/
 *.sqlite3
+backend/media/

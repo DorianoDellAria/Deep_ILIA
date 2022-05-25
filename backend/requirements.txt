@@ -2,5 +2,6 @@ django
 djangorestframework
 djangorestframework-simplejwt
 django-crontab
+django-resized
 beautifulsoup4
 requests
