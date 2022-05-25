@@ -18,9 +18,9 @@ def wrapper(instance, filename):
 
 
 class User(AbstractUser):
-    Summary = models.CharField(max_length=200)
-    Biography = models.CharField(max_length=200)
-    Orbi_url = models.CharField(max_length=200)
+    summary = models.CharField(max_length=200)
+    biography = models.CharField(max_length=200)
+    orbi_url = models.CharField(max_length=200)
     profile_pic = ResizedImageField(
         size=[117, 117], upload_to=wrapper, crop=['middle', 'center'], blank=True, null=True)
     # profile_pic = models.ImageField(
@@ -28,22 +28,22 @@ class User(AbstractUser):
 
 
 class Publication(models.Model):
-    UserId = models.ForeignKey(User, on_delete=models.CASCADE)
-    Citation = models.CharField(max_length=600)
-    Link = models.CharField(max_length=100)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    citation = models.CharField(max_length=600)
+    link = models.CharField(max_length=100)
 
 
 class SocialNetwork(models.Model):
-    UserId = models.ForeignKey(
+    user_id = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='social_networks')
-    Type = models.CharField(max_length=50)
-    Link = models.CharField(max_length=50)
+    type = models.CharField(max_length=50)
+    link = models.CharField(max_length=50)
 
 
 class Project(models.Model):
-    Title = models.CharField(max_length=50)
-    Image_url = models.CharField(max_length=50)
-    Description = models.CharField(max_length=200)
-    Status = models.CharField(max_length=50)
-    Date = models.DateField(null=True)
-    ProjectMembers = models.ManyToManyField(User, related_name='projects')
+    title = models.CharField(max_length=50)
+    image_url = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
+    status = models.CharField(max_length=50)
+    date = models.DateField(null=True)
+    project_members = models.ManyToManyField(User, related_name='projects')

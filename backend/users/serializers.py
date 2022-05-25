@@ -9,7 +9,7 @@ class SocialNetworkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SocialNetwork
-        fields = ('id', 'Type', 'Link')
+        fields = ('id', 'type', 'link')
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -25,8 +25,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'Summary', 'username', 'password', 'Orbi_url',
-                  'profile_pic', 'Biography', 'social_networks', 'projects')
+        fields = ('id', 'summary', 'username', 'password', 'orbi_url',
+                  'profile_pic', 'biography', 'social_networks', 'projects')
 
     def create(self, validated_data):
         # logger.error('UserSerializer.create')

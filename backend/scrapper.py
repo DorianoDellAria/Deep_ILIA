@@ -101,7 +101,7 @@ def update_users_publications():
     users = User.objects.all()
 
     for user in users:
-        orbi_url = user.Orbi_url
+        orbi_url = user.orbi_url
         if not orbi_url:
             continue
 
@@ -109,7 +109,7 @@ def update_users_publications():
 
         for Citation, Link, Date in publications:
             Publication.objects.update_or_create(
-                UserId=user, Citation=Citation, Link=Link, Date=Date)
+                user_id=user, citation=Citation, link=Link, date=Date)
 
 
 if __name__ == '__main__':

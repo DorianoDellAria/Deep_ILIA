@@ -14,9 +14,9 @@ class CustomUserAdmin(UserAdmin):
             'Additional Information',
             {
                 'fields': (
-                    'Summary',
-                    'Biography',
-                    'Orbi_url',
+                    'summary',
+                    'biography',
+                    'orbi_url',
                     'profile_pic',
                 )
             }

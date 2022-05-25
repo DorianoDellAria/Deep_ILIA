@@ -70,15 +70,15 @@ def update_users_publications():
     users = User.objects.all()
 
     for user in users:
-        orbi_url = user.Orbi_url
+        orbi_url = user.orbi_url
         if not orbi_url:
             continue
 
         publications = get_user_publications(orbi_url)
 
-        for Citation, Link in publications:
+        for citation, link in publications:
             Publication.objects.update_or_create(
-                UserId=user, Citation=Citation, Link=Link)
+                user_id=user, citation=citation, link=link)
 
 
 if __name__ == '__main__':
