@@ -32,7 +32,7 @@ function Publications() {
         <h3>Publications</h3>
       </div>
       <div className="publications-elements">
-        {isLoading ? "loading..." :publications?.map((publication) => <Publication key={publication.id} link={publication.Link} citation={publication.Citation}></Publication>)}
+        {isLoading ? "loading..." :publications?.map((publication) => <Publication key={publication.id} link={publication.link} citation={publication.citation}></Publication>)}
       </div>
     </div>
   </>
