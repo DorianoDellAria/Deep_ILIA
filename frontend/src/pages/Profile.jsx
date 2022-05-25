@@ -55,20 +55,20 @@ function Profile() {
 
     return (
         <>
-            <Banner name={username} link={testUser.link} />
+            <Banner name={username} link={testUser.link} image={user.profile_pic} />
             <ProfileElement header="Biography" description={user.biography} />
             <Publications publications={user.publications} />
         </>
     );
 }
 
-function Banner({ name, link }) {
-    const url = "/src/assets/profiles/john_doe.png";
+function Banner({ name, link, image }) {
+    const image_url = image || "/src/assets/profiles/john_doe.png";
     return (
         <div className="banner">
             <div className="banner-content">
                 <div className="banner-name">{name}</div>
-                <img src={url} alt="" width={261} />
+                <img src={image_url} alt="" width={261} />
             </div>
         </div>
     );
