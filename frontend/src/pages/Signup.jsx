@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useMutation, useQuery } from 'react-query'
 import * as api from '../api'
 import './Login.scss'
 
@@ -10,14 +11,54 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [email, setEmail] = useState('')
+    const [summary, setSummary] = useState('')
+    const [biography, setBiography] = useState('')
+    const [orbiUrl, setOrbiUrl] = useState('')
     const [image, setImage] = useState(null)
-
+    const [canFetch, setCanFetch] = useState(false)
     let navigate = useNavigate()
+
+    const { mutate, } = useMutation(() => api.register(firstName, lastName, localUsername, password, email, summary, biography, orbiUrl), {
+        onSuccess: () => {
+            setCanFetch(true)
+        }
+    })
+
+    useQuery('access', () => api.getToken(localUsername, password), {
+        enabled: canFetch,
+        onSuccess: ({ access, refresh }) => {
+            setCanFetch(false)
+            setAccess(access)
+            setRefresh(refresh)
+            setUsername(localUsername)
+            setIsLoged(true)
+            navigate(-1, { replace: true })
+        }
+    })
+
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        navigate(-1, { replace: true })
+
+
+        if (password !== passwordConfirm) {
+            alert('Passwords do not match')
+            return
+        }
+
+        mutate({ firstName, lastName, localUsername, password, email, summary, biography, orbiUrl })
+        // setAccess(access)
+        // setRefresh(refresh)
+        // setUsername(localUsername)
+        // setIsLoged(true)
+        // navigate(-1, { replace: true })
     }
+
+    // if (isSuccess) {
+
+    // }
 
 
     return (
@@ -49,11 +90,23 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
                         <label htmlFor="email">Email : </label>
                         <input type="email" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
                     </div>
+                    <div className='field'>
+                        <label htmlFor="summary">Summary : </label>
+                        <input type="text" id="summary" name="summary" value={summary} onChange={e => setSummary(e.target.value)} placeholder="Summary" />
+                    </div>
+                    <div className='field'>
+                        <label htmlFor="biography">Biography : </label>
+                        <textarea id="biography" name="biography" value={biography} onChange={e => setBiography(e.target.value)} placeholder="Biography" />
+                    </div>
+                    <div className='field'>
+                        <label htmlFor="orbiUrl">Orbi URL : </label>
+                        <input type="text" id="orbiUrl" name="orbiUrl" value={orbiUrl} onChange={e => setOrbiUrl(e.target.value)} placeholder="Orbi URL" />
+                    </div>
                     <div className="field">
                         <label htmlFor="profilImage">Profil Image : </label>
-                        <input type="file" id="profilImage" name="profilImage" value={image} onChange={() =>  setImage(e.target.files[0])} />
+                        <input type="file" id="profilImage" name="profilImage" value={image} onChange={() => setImage(e.target.files[0])} />
                     </div>
-                    <button className='button is-primary' type='submit' >Sign Up</button>
+                    <button className='button is-primary' type='submit'>Sign Up</button>
                 </div>
             </form>
         </div>

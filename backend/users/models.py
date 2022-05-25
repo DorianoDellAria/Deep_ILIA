@@ -20,7 +20,7 @@ def wrapper(instance, filename):
 class User(AbstractUser):
     summary = models.CharField(max_length=200)
     biography = models.CharField(max_length=200)
-    orbi_url = models.CharField(max_length=200)
+    orbi_url = models.CharField(max_length=200, blank=True)
     profile_pic = ResizedImageField(
         size=[117, 117], upload_to=wrapper, crop=['middle', 'center'], blank=True, null=True)
     # profile_pic = models.ImageField(

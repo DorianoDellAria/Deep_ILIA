@@ -38,13 +38,16 @@ export async function refreshToken(token) {
     return response.data;
 }
 
-export async function register(username, password, first_name, last_name, email) {
-    const response = await request.post('/register/', {
+export async function register(first_name, last_name, username, password, email, summary, biography, orbi_url) {
+    const response = await request.post('/create_user/', {
         username: username,
         password: password,
         first_name: first_name,
         last_name: last_name,
         email: email,
+        summary: summary,
+        biography: biography,
+        orbi_url: orbi_url,
     });
     return response.data;
 }
