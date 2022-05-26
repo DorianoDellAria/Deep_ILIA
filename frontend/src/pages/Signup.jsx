@@ -15,12 +15,20 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
     const [biography, setBiography] = useState('')
     const [orbiUrl, setOrbiUrl] = useState('')
     const [image, setImage] = useState(null)
+    const [github, setGithub] = useState('')
+    const [linkedin, setLinkedin] = useState('')
+    const [site, setSite] = useState('')
     const [canFetch, setCanFetch] = useState(false)
     let navigate = useNavigate()
 
-    const { mutate, } = useMutation(() => api.register(firstName, lastName, localUsername, password, email, summary, biography, orbiUrl), {
+    const { mutate, } = useMutation(() => api.register(firstName, lastName, localUsername, password, email, summary, biography, orbiUrl, github, linkedin, site), {
         onSuccess: () => {
             setCanFetch(true)
+        },
+        onError: ({response}) => {
+            setCanFetch(false)
+            const {data} = response
+            window.alert(JSON.stringify(data, null, 2))
         }
     })
 
@@ -105,6 +113,18 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
                     <div className="field">
                         <label htmlFor="profilImage">Profil Image : </label>
                         <input type="file" id="profilImage" name="profilImage" value={image} onChange={() => setImage(e.target.files[0])} />
+                    </div>
+                    <div className="field">
+                        <label htmlFor="github">Github : </label>
+                        <input type="text" id="github" name="github" value={github} onChange={e => setGithub(e.target.value)} placeholder="Github" />
+                    </div>
+                    <div className="field">
+                        <label htmlFor="linkedin">Linkedin : </label>
+                        <input type="text" id="linkedin" name="linkedin" value={linkedin} onChange={e => setLinkedin(e.target.value)} placeholder="Linkedin" />
+                    </div>
+                    <div className="field">
+                        <label htmlFor="site">Site : </label>
+                        <input type="text" id="site" name="site" value={site} onChange={e => setSite(e.target.value)} placeholder="Site" />
                     </div>
                     <button className='button is-primary' type='submit'>Sign Up</button>
                 </div>

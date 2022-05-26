@@ -38,7 +38,21 @@ export async function refreshToken(token) {
     return response.data;
 }
 
-export async function register(first_name, last_name, username, password, email, summary, biography, orbi_url) {
+export async function register(first_name, last_name, username, password, email, summary, biography, orbi_url, github, linkedin, site) {
+    const social_networks = [
+        {
+            type: 'github',
+            link: github,
+        },
+        {
+            type: 'linkedin',
+            link: linkedin,
+        },
+        {
+            type: 'site',
+            link: site,
+        },
+    ]
     const response = await request.post('/create_user/', {
         username: username,
         password: password,
@@ -48,6 +62,7 @@ export async function register(first_name, last_name, username, password, email,
         summary: summary,
         biography: biography,
         orbi_url: orbi_url,
+        social_networks: social_networks,
     });
     return response.data;
 }
