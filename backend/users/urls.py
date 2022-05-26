@@ -22,4 +22,5 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('get_group/<str:group_name>', views.get_group, name='get_group'),
+    path('update_image/', views.update_image, name='update_image'),
 ]

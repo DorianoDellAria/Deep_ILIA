@@ -38,7 +38,7 @@ export async function refreshToken(token) {
     return response.data;
 }
 
-export async function register(first_name, last_name, username, password, email, summary, biography, orbi_url, github, linkedin, site) {
+export async function register({ first_name, last_name, username, password, email, summary, biography, orbi_url, github, linkedin, site }) {
     const social_networks = [
         {
             type: 'github',
@@ -68,12 +68,14 @@ export async function register(first_name, last_name, username, password, email,
 }
 
 export async function updateImage(token, image) {
+    let formData = new FormData();
+    formData.append('image', image);
 
-    const response = await request.post('/update_image/', {
-        image: image,
-        token: token,
-    }, headers = {
-        'Content-Type': 'multipart/form-data',
+    const response = await request.post('/update_image/', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': 'Bearer ' + token,
+        }
     });
     return response.data;
 }

@@ -92,3 +92,12 @@ def get_publications(request):
     publications = Publication.objects.all()
     serializer = PublicationSerializer(publications, many=True)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_image(request):
+    user = request.user
+    user.profile_pic = request.data.get('image')
+    user.save()
+    return Response({'message': 'image updated'})
