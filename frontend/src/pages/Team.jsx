@@ -5,33 +5,6 @@ import { useQuery } from 'react-query';
 import { getGroup } from '../api'
 
 
-// //To delete 
-// const professor = [
-//     {
-//         username: 'Sidi',
-//         summary: 'Professor in Computer Science and Engineering',
-//         profile_pic: "./src/assets/profiles/image3.png",
-//     }
-// ];
-// // todelete
-// const students = [
-//     {
-//         username: 'John Doe',
-//         summary: 'Student in Computer Science and Engineering',
-//         profile_pic: "./src/assets/profiles/image4.png",
-//     },
-//     {
-//         username: 'John Doe',
-//         summary: 'Student in Computer Science and Engineering',
-//         profile_pic: "./src/assets/profiles/image5.png",
-//     },
-//     {
-//         username: 'John Doe',
-//         summary: 'Student in Computer Science and Engineering',
-//         profile_pic: "./src/assets/profiles/image6.png",
-//     }
-// ];
-
 const colors = {
     primary: '#BD0E3A',
     secondary: '#00366D',
@@ -51,14 +24,14 @@ function Team() {
         <>
             <h1 className='is-primary'>Team</h1>
             <div className="team">
-                <TeamSection sectionName="Professor" members={professor} color={colors.primary} />
+                <TeamSection sectionName="Professor" members={professor} color={colors.primary} prof />
                 <TeamSection sectionName="PhD Students" members={students} color={colors.secondary} />
             </div>
         </>
     );
 }
 
-function TeamSection({ sectionName, members, color }) {
+function TeamSection({ sectionName, members, color, prof }) {
     const style = {
         color: color,
         borderRight: `6px solid ${color}`,
@@ -70,7 +43,7 @@ function TeamSection({ sectionName, members, color }) {
             </div>
             <div className="team-list">
                 {
-                    members.map((member, index) => <TeamMember key={index} member={member} />)
+                    members.map((member, index) => <TeamMember key={index} member={member} prof={prof} />)
                 }
             </div>
 
@@ -78,11 +51,11 @@ function TeamSection({ sectionName, members, color }) {
     );
 }
 
-function TeamMember({ member }) {
+function TeamMember({ member, prof }) {
     // TODO : add icons
     return (
         <div className="team-member">
-            <div className="team-image">
+            <div className={prof ? "team-image-prof" : "team-image-student"}>
                 {member.profile_pic ? <img src={member.profile_pic} alt="profileImage" /> : <img src="./src/assets/profiles/john_doe.png" alt="profileImage" height='124' width='124' />}
             </div>
             <div className="team-member-info">

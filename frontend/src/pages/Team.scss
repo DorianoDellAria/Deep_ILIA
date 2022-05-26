@@ -1,14 +1,25 @@
 @import "../layout.scss";
+@import "../variables.scss";
 
 
 .team {
 
-    &-image {
+    &-image-prof {
         img {
             // round
             align-self: flex-start;
             border-radius: 50%;
-            border: 7px solid #00366D; // 10 px, je les ai compté sur la maquette !
+            border: 7px solid $primary; // 10 px, je les ai compté sur la maquette !
+
+        }
+    }
+
+    &-image-student {
+        img {
+            // round
+            align-self: flex-start;
+            border-radius: 50%;
+            border: 7px solid $neutral; // 10 px, je les ai compté sur la maquette !
 
         }
     }
