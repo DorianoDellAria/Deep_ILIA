@@ -1,34 +1,36 @@
 import React from 'react'
 import './Team.scss'
 import { Link } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { getGroup } from '../api'
 
 
-//To delete 
-const professor = [
-    {
-        username: 'Sidi',
-        description: 'Professor in Computer Science and Engineering',
-        image: "./src/assets/profiles/image3.png",
-    }
-];
-// todelete
-const students = [
-    {
-        username: 'John Doe',
-        description: 'Student in Computer Science and Engineering',
-        image: "./src/assets/profiles/image4.png",
-    },
-    {
-        username: 'John Doe',
-        description: 'Student in Computer Science and Engineering',
-        image: "./src/assets/profiles/image5.png",
-    },
-    {
-        username: 'John Doe',
-        description: 'Student in Computer Science and Engineering',
-        image: "./src/assets/profiles/image6.png",
-    }
-];
+// //To delete 
+// const professor = [
+//     {
+//         username: 'Sidi',
+//         summary: 'Professor in Computer Science and Engineering',
+//         profile_pic: "./src/assets/profiles/image3.png",
+//     }
+// ];
+// // todelete
+// const students = [
+//     {
+//         username: 'John Doe',
+//         summary: 'Student in Computer Science and Engineering',
+//         profile_pic: "./src/assets/profiles/image4.png",
+//     },
+//     {
+//         username: 'John Doe',
+//         summary: 'Student in Computer Science and Engineering',
+//         profile_pic: "./src/assets/profiles/image5.png",
+//     },
+//     {
+//         username: 'John Doe',
+//         summary: 'Student in Computer Science and Engineering',
+//         profile_pic: "./src/assets/profiles/image6.png",
+//     }
+// ];
 
 const colors = {
     primary: '#BD0E3A',
@@ -37,6 +39,14 @@ const colors = {
 
 
 function Team() {
+
+    const { data: professor, isLoading: l1 } = useQuery('professor', () => getGroup('Professor'));
+    const { data: students, isLoading: l2 } = useQuery('phd_student', () => getGroup('PhD_Student'));
+
+    if (l1 || l2) {
+        return <div>Loading...</div>
+    }
+
     return (
         <>
             <h1 className='is-primary'>Team</h1>
@@ -73,7 +83,7 @@ function TeamMember({ member }) {
     return (
         <div className="team-member">
             <div className="team-image">
-                <img src={member.image} alt="profileImage" />
+                {member.profile_pic ? <img src={member.profile_pic} alt="profileImage" /> : <img src="./src/assets/profiles/john_doe.png" alt="profileImage" height='124' width='124' />}
             </div>
             <div className="team-member-info">
                 <Link to={"/profile/" + member.username}>
@@ -82,7 +92,7 @@ function TeamMember({ member }) {
                     </h4>
                 </Link>
                 <p>
-                    {member.description}
+                    {member.summary}
                 </p>
                 <p>
                     réseau IMAGE

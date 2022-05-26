@@ -2,6 +2,17 @@
 
 
 .team {
+
+    &-image {
+        img {
+            // round
+            align-self: flex-start;
+            border-radius: 50%;
+            border: 7px solid #00366D; // 10 px, je les ai compté sur la maquette !
+
+        }
+    }
+
     &-section {
         @extend %layout-section;
     }

@@ -21,4 +21,5 @@ urlpatterns = [
     path('create_project/', views.create_project, name='create_project'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('get_group/<str:group_name>', views.get_group, name='get_group'),
 ]

@@ -62,3 +62,8 @@ export async function updateImage(token, image) {
     });
     return response.data;
 }
+
+export async function getGroup(goup_name) {
+    const response = await request.get('/get_group/' + goup_name);
+    return response.data;
+}

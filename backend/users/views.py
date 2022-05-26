@@ -24,6 +24,14 @@ def get_user(request, username):
     return Response(serializer.data)
 
 
+@api_view(['GET'])
+def get_group(request, group_name):
+    # find users that belong to the group
+    users = User.objects.filter(groups__name=group_name)
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)
+
+
 @api_view(['POST'])
 def create_user(request):
     # logger.error('create_user')

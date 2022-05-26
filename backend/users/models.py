@@ -18,8 +18,9 @@ def wrapper(instance, filename):
 
 
 class User(AbstractUser):
+    # TODO: TextField
     summary = models.CharField(max_length=200)
-    biography = models.CharField(max_length=200)
+    biography = models.TextField()
     orbi_url = models.CharField(max_length=200, blank=True)
     profile_pic = ResizedImageField(
         size=[117, 117], upload_to=wrapper, crop=['middle', 'center'], blank=True, null=True)
@@ -30,7 +31,7 @@ class User(AbstractUser):
 class Publication(models.Model):
     user_id = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='publications')
-    citation = models.CharField(max_length=600)
+    citation = models.TextField()
     link = models.CharField(max_length=100)
 
 
