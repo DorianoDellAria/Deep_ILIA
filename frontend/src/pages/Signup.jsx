@@ -100,7 +100,7 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
                     </div>
                     <div className='field'>
                         <label htmlFor="username">Username : </label>
-                        <input type="text" id="username" name="username" value={localUsername} onChange={e => setLocalUsername(e.target.value)} placeholder="Username" />
+                        <input type="text" id="username" name="username" value={localUsername} onChange={e => setLocalUsername(e.target.value.toLowerCase())} placeholder="Username" />
                     </div>
                     <div className='field'>
                         <label htmlFor="password">Password : </label>

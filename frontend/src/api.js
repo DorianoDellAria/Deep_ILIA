@@ -13,13 +13,13 @@ export async function getUser(username) {
     return response.data;
 }
 
-export async function getPublications() {
-    const response = await request.get('/get_publications');
+export async function getPublications({ pageParam=1 }) {
+    const response = await request.get('/get_publications/?page=' + pageParam);
     return response.data;
 }
 
-export async function getUserPublications(username) {
-    const response = await request.get('/get_publications/' + username);
+export async function getUserPublications({username, pageParam=1}) {
+    const response = await request.get('/get_publications/' + username + '/?page=' + pageParam);
     return response.data;
 }
 
