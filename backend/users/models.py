@@ -38,7 +38,7 @@ class SocialNetwork(models.Model):
     user_id = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='social_networks')
     type = models.CharField(max_length=50)
-    link = models.CharField(max_length=50)
+    link = models.CharField(max_length=50, blank=True)
 
 
 class Project(models.Model):
