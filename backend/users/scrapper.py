@@ -76,7 +76,7 @@ def update_users_publications():
 
         publications = get_user_publications(orbi_url)
 
-        for citation, link in publications:
+        for citation, link in reversed(publications):
             Publication.objects.update_or_create(
                 user_id=user, citation=citation, link=link)
 
