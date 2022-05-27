@@ -1,4 +1,5 @@
 import profile
+from xmlrpc.client import TRANSPORT_ERROR
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django_resized import ResizedImageField
@@ -14,6 +15,14 @@ def wrapper(instance, filename):
     # return the whole path to the file
     return os.path.join('profile_pics', filename)
 
+
+def partners(instance, filename):
+    ext = filename.split('.')[-1]
+    # get filename
+    filename = '{}.{}'.format(uuid4().hex, ext)
+    # return the whole path to the file
+    return os.path.join('project', filename)
+
 # Create your models here.
 
 
@@ -23,7 +32,7 @@ class User(AbstractUser):
     biography = models.TextField()
     orbi_url = models.CharField(max_length=200, blank=True)
     profile_pic = ResizedImageField(
-        size=[117, 117], upload_to=wrapper, crop=['middle', 'center'], blank=True, null=True)
+        size=[500, 500], upload_to=wrapper, crop=['middle', 'center'], blank=True, null=True)
     # profile_pic = models.ImageField(
     #     upload_to=wrapper, blank=True)
 
@@ -43,9 +52,15 @@ class SocialNetwork(models.Model):
 
 
 class Project(models.Model):
-    title = models.CharField(max_length=50)
-    image_url = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
-    status = models.CharField(max_length=50)
-    date = models.DateField(null=True)
-    project_members = models.ManyToManyField(User, related_name='projects')
+    title = models.CharField(max_length=200)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    description = models.TextField()
+    image_url = models.ImageField(upload_to=partners, blank=True)
+    partner_url = models.ImageField(upload_to=partners, blank=True)
+    coordinators = models.ManyToManyField(
+        User, related_name='projects_coordinated', blank=True)
+    researchers = models.ManyToManyField(
+        User, related_name='projects_research', blank=True)
+    collaborators = models.ManyToManyField(
+        User, related_name='projects_collab', blank=True)

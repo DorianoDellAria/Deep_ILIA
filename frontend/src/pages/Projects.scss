@@ -1,4 +1,5 @@
 @import "../../node_modules/bulma/sass/grid/columns.sass";
+@import "../variables.scss";
 
 .project {
   margin-top: 100px;
@@ -60,9 +61,19 @@
       flex-wrap: wrap;
       justify-content: flex-start;
 
+
       img {
         margin-right: 28px;
         margin-top: 18px;
+      }
+
+      &-profile {
+        width: 117px;
+        height: 117px;
+
+        border-radius: 50%;
+        border: 7px solid $neutral;
+
       }
     }
   }

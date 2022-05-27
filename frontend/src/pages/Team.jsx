@@ -56,7 +56,7 @@ function TeamMember({ member, prof }) {
     return (
         <div className="team-member">
             <div className={prof ? "team-image-prof" : "team-image-student"}>
-                {member.profile_pic ? <img src={member.profile_pic} alt="profileImage" /> : <img src="./src/assets/profiles/john_doe.png" alt="profileImage" height='124' width='124' />}
+                {member.profile_pic ? <img src={member.profile_pic} alt="profileImage" height='151' width='151' /> : <img src="./src/assets/profiles/john_doe.png" alt="profileImage" height='151' width='151' />}
             </div>
             <div className="team-member-info">
                 <Link to={"/profile/" + member.username}>

@@ -12,12 +12,6 @@ class SocialNetworkSerializer(serializers.ModelSerializer):
         fields = ('id', 'type', 'link')
 
 
-class ProjectSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Project
-        fields = '__all__'
-
-
 class PublicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publication
@@ -26,15 +20,15 @@ class PublicationSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     social_networks = SocialNetworkSerializer(many=True)
-    projects = ProjectSerializer(many=True, read_only=True)
-    publications = PublicationSerializer(many=True, read_only=True)
     password = serializers.CharField(write_only=True)
+    publications = PublicationSerializer(
+        many=True, read_only=True)
     profile_pic = serializers.ImageField(read_only=True)
 
     class Meta:
         model = User
         fields = ('id', 'summary', 'username', 'password', 'orbi_url',
-                  'profile_pic', 'biography', 'social_networks', 'projects', 'email', 'first_name', 'last_name', 'publications')
+                  'profile_pic', 'biography', 'social_networks', 'email', 'first_name', 'last_name', 'publications')
 
     def create(self, validated_data):
         # logger.error('UserSerializer.create')
@@ -44,3 +38,21 @@ class UserSerializer(serializers.ModelSerializer):
         for social_network_data in social_networks_data:
             SocialNetwork.objects.create(user_id=user, **social_network_data)
         return user
+
+
+class MemberSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'profile_pic')
+
+
+class ProjectSerializer(serializers.ModelSerializer):
+
+    coordinators = MemberSerializer(many=True, read_only=True)
+    researchers = MemberSerializer(many=True, read_only=True)
+    collaborators = MemberSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Project
+        fields = '__all__'

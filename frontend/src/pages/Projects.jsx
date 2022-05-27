@@ -1,96 +1,85 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useQuery } from 'react-query'
+import { getProjects } from '../api'
 
 import './Projects.scss'
 
+
+function Members({ title, members }) {
+  return <div className="project-members-type">
+    <h3>{title}</h3>
+    <div className="project-members-list">
+      {members.map(member => <img className='project-members-list-profile' key={member.id} src={member?.profile_pic || './src/assets/profiles/john_doe.png'} alt={member.username} />)}
+    </div>
+  </div>
+}
+
+function Project({ project }) {
+
+  const [startDate, setStartDate] = React.useState(null)
+  const [endDate, setEndDate] = React.useState(null)
+
+  useEffect(() => {
+    if (project.start_date) {
+      const start = new Date(project.start_date);
+      const month = start.getMonth() + 1;
+      const year = start.getFullYear();
+      setStartDate(`${month} / ${year}`)
+    }
+    if (project.end_date) {
+      const end = new Date(project.end_date);
+      const month = end.getMonth() + 1;
+      const year = end.getFullYear();
+      setEndDate(`${month} / ${year}`)
+    } else {
+      setEndDate('In progress')
+    }
+  }, [project])
+
+  return <div className="project">
+    <div className="project-header">
+      <h2 className="is-primary">{project.title}</h2>
+      <div className="project-header-info">
+        {startDate} - {endDate}
+      </div>
+    </div>
+    {project.image_url ? <div className="project-image">
+      <img src={project.image_url} alt="project" />
+    </div> : null}
+    <p>
+      {project.description}
+    </p>
+    <div className="project-members">
+      <div className="project-members-left">
+        {project.coordinators.length != 0 ? <Members title="Coordinators" members={project.coordinators} /> : null}
+        {project.researchers.length != 0 ? <Members title="Researchers" members={project.researchers} /> : null}
+        {project.collaborators.length != 0 ? <Members title="Collaborators" members={project.collaborators} /> : null}
+      </div>
+      {project.partner_url ? <div className="project-members-right">
+        <div className="project-members-type">
+          <h3>Partners</h3>
+          <div className="project-members-list">
+            <img src={project.partner_url} alt="image1" />
+          </div>
+        </div>
+      </div> : null}
+    </div>
+  </div>
+}
+
 function Projects() {
+
+  const { data: projects, isLoading } = useQuery('projects', getProjects)
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
   return (<>
     <h1 className="is-primary">Projects</h1>
 
 
-    <div className="project">
-      <div className="project-header">
-        <h2 className="is-primary">Customs Fraud Detection AI System </h2>
-        <div className="project-header-info">
-          01 / 2020 - In Progress
-        </div>
-      </div>
-      <p>
-        bekijken van de layout van een pagina, afgeleid wordt door de tekstuele inhoud. Het belangrijke punt van het gebruik van Lorem Ipsum is dat het uit een min of meer normale verdeling van letters bestaat, in tegenstelling tot "Hier uw tekst, hier uw tekst" wat het tot min of meer leesbaar nederlands maakt. Veel desktop publishing pakketten en web pagina editors gebruiken tegenwoordig Lorem Ipsum als hun standaard model tekst, en een zoekopdracht naar "lorem ipsum" ontsluit veel websites die nog in aanbouw zijn. Verscheidene versies hebben zich ontwikkeld in de loop van de jaren, soms per ongeluk soms expres (ingevoegde humor en dergelijke).
-      </p>
-      <div className="project-members">
-        <div className="project-members-left">
-          <div className="project-members-type">
-            <h3>Coordinators</h3>
-            <div className="project-members-list">
-              <img src="./src/assets/profiles/image3.png" alt="image1" />
-              <img src="./src/assets/profiles/image2.png" alt="image1" />
-            </div>
-          </div>
-          <div className="project-members-type">
-            <h3>Researchers</h3>
-            <div className="project-members-list">
-              <img src="./src/assets/profiles/image1.png" alt="image1" />
-              <img src="./src/assets/profiles/image4.png" alt="image1" />
-            </div>
-          </div>
-        </div>
-        <div className="project-members-right">
-          <div className="project-members-type">
-            <h3>Partners</h3>
-            <div className="project-members-list">
-              <img src="./src/assets/part1.svg" alt="image1" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="project">
-      <div className="project-header">
-        <h2 className="is-primary">Construction Workers Protection AI System</h2>
-        <div className="project-header-info">
-          01 / 2020 - In Progress
-        </div>
-      </div>
-      <div className="project-image">
-        <img src="./src/assets/projectillust.png" alt="project" />
-      </div>
-      <p>
-        bekijken van de layout van een pagina, afgeleid wordt door de tekstuele inhoud. Het belangrijke punt van het gebruik van Lorem Ipsum is dat het uit een min of meer normale verdeling van letters bestaat, in tegenstelling tot "Hier uw tekst, hier uw tekst" wat het tot min of meer leesbaar nederlands maakt. Veel desktop publishing pakketten en web pagina editors gebruiken tegenwoordig Lorem Ipsum als hun standaard model tekst, en een zoekopdracht naar "lorem ipsum" ontsluit veel websites die nog in aanbouw zijn. Verscheidene versies hebben zich ontwikkeld in de loop van de jaren, soms per ongeluk soms expres (ingevoegde humor en dergelijke).
-      </p>
-      <div className="project-members">
-        <div className="project-members-left">
-          <div className="project-members-type">
-            <h3>Coordinators</h3>
-            <div className="project-members-list">
-              <img src="./src/assets/profiles/image3.png" alt="image1" />
-              <img src="./src/assets/profiles/image5.png" alt="image1" />
-            </div>
-          </div>
-          <div className="project-members-type">
-            <h3>Researchers</h3>
-            <div className="project-members-list">
-              <img src="./src/assets/profiles/image6.png" alt="image1" />
-            </div>
-          </div>
-          <div className="project-members-type">
-            <h3>Collaborators</h3>
-            <div className="project-members-list">
-              <img src="./src/assets/profiles/image7.png" alt="image1" />
-              <img src="./src/assets/profiles/image4.png" alt="image1" />
-            </div>
-          </div>
-        </div>
-        <div className="project-members-right">
-          <div className="project-members-type">
-            <h3>Partners</h3>
-            <div className="project-members-list">
-              <img src="./src/assets/part2.svg" alt="image1" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    {projects.map(project => <Project key={project.id} project={project} />)}
 
   </>
   )
