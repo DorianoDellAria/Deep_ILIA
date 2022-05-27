@@ -3,7 +3,7 @@ import logo from '../assets/deep-logo.svg'
 import { Link } from 'react-router-dom'
 import CredentialContext from '../CredentialContext'
 
-import { UimAngleRightB as Angle } from './angle'
+import { UimAngleRightB as Angle } from './icons'
 import './NavBar.scss'
 
 function NavBar({ logout }) {

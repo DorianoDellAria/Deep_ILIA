@@ -35,12 +35,19 @@
         max-width: calc(1920px * 0.70);
         height: 100%;
 
+        
+    }
+
+    &-info {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
         img {
             // round
             align-self: flex-start;
             border-radius: 50%;
             border: 10px solid $primary; // 10 px, je les ai compté sur la maquette !
-
         }
     }
 }
