@@ -43,6 +43,9 @@ class Publication(models.Model):
     citation = models.TextField()
     link = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ['id']
+
 
 class SocialNetwork(models.Model):
     user_id = models.ForeignKey(

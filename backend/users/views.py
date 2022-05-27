@@ -1,8 +1,10 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import ListAPIView
 from .models import User, Project, Publication, SocialNetwork
 from .serializers import UserSerializer, ProjectSerializer, PublicationSerializer, SocialNetworkSerializer
+from .pagination import CustomPagination
 import logging
 
 logger = logging.getLogger(__name__)
@@ -87,8 +89,30 @@ def create_project(request):
     return Response(serializer.errors, status=400)
 
 
-@api_view(['GET'])
-def get_publications(request):
-    publications = Publication.objects.all()
-    serializer = PublicationSerializer(publications, many=True)
-    return Response(serializer.data)
+class GetPublicationsView(ListAPIView):
+    serializer_class = PublicationSerializer
+    pagination_class = CustomPagination
+    queryset = Publication.objects.all()
+
+
+class GetUserPublicationsView(ListAPIView):
+    serializer_class = PublicationSerializer
+    pagination_class = CustomPagination
+
+    def get_queryset(self):
+        username = self.kwargs.get('username')
+        if not username:
+            return Publication.objects.none()
+        user = User.objects.filter(username=username).first()
+        if not user:
+            return Publication.objects.none()
+        return Publication.objects.filter(user_id=user.id)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_image(request):
+    user = request.user
+    user.profile_pic = request.data.get('image')
+    user.save()
+    return Response({'message': 'image updated'})

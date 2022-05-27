@@ -21,16 +21,19 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
     const [canFetch, setCanFetch] = useState(false)
     let navigate = useNavigate()
 
-    const { mutate, } = useMutation(() => api.register(firstName, lastName, localUsername, password, email, summary, biography, orbiUrl, github, linkedin, site), {
+    const { mutate, } = useMutation((newUser) => api.register(newUser), {
         onSuccess: () => {
             setCanFetch(true)
         },
-        onError: ({response}) => {
+        onError: ({ response }) => {
             setCanFetch(false)
-            const {data} = response
+            const { data } = response
             window.alert(JSON.stringify(data, null, 2))
         }
     })
+
+    const { mutate: imageMutate } = useMutation(({ token, image }) => api.updateImage(token, image))
+
 
     useQuery('access', () => api.getToken(localUsername, password), {
         enabled: canFetch,
@@ -40,6 +43,7 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
             setRefresh(refresh)
             setUsername(localUsername)
             setIsLoged(true)
+            imageMutate({ token: access, image: image })
             navigate(-1, { replace: true })
         }
     })
@@ -56,7 +60,19 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
             return
         }
 
-        mutate({ firstName, lastName, localUsername, password, email, summary, biography, orbiUrl })
+        mutate({
+            first_name: firstName,
+            last_name: lastName,
+            username: localUsername,
+            password: password,
+            email: email,
+            summary: summary,
+            biography: biography,
+            orbi_url: orbiUrl,
+            github: github,
+            linkedin: linkedin,
+            site: site
+        })
         // setAccess(access)
         // setRefresh(refresh)
         // setUsername(localUsername)
@@ -84,7 +100,7 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
                     </div>
                     <div className='field'>
                         <label htmlFor="username">Username : </label>
-                        <input type="text" id="username" name="username" value={localUsername} onChange={e => setLocalUsername(e.target.value)} placeholder="Username" />
+                        <input type="text" id="username" name="username" value={localUsername} onChange={e => setLocalUsername(e.target.value.toLowerCase())} placeholder="Username" />
                     </div>
                     <div className='field'>
                         <label htmlFor="password">Password : </label>
@@ -112,7 +128,7 @@ function Signup({ setAccess, setRefresh, setIsLoged, setUsername }) {
                     </div>
                     <div className="field">
                         <label htmlFor="profilImage">Profil Image : </label>
-                        <input type="file" id="profilImage" name="profilImage" value={image} onChange={() => setImage(e.target.files[0])} />
+                        <input type="file" id="profilImage" name="profilImage" onChange={(e) => setImage(e.target.files[0])} accept="image/*" />
                     </div>
                     <div className="field">
                         <label htmlFor="github">Github : </label>

@@ -2,13 +2,17 @@ import React from 'react'
 import './Profile.scss'
 import { useParams } from 'react-router-dom';
 import Publication from '../components/Publication'
-import { useQuery } from 'react-query'
-import { getUser } from '../api'
+import { useQuery, useInfiniteQuery } from 'react-query'
+import { getUser, getUserPublications } from '../api'
 
 
 function Profile() {
     const { username } = useParams();
     const { data: user, isLoading } = useQuery(['user', username], () => getUser(username));
+
+    const { data: publications, fetchNextPage, hasNextPage } = useInfiniteQuery(['publications', username],  ({pageParam}) => getUserPublications({username: username, pageParam: pageParam}), {
+        getNextPageParam: (lastPage) => lastPage.next,
+    });
     const testUser = {
         username: username,
         link: 'google.com'
@@ -22,7 +26,8 @@ function Profile() {
         <>
             <Banner name={username} link={testUser.link} image={user.profile_pic} />
             <ProfileElement header="Biography" description={user.biography} />
-            <Publications publications={user.publications} />
+            <Publications publications={publications} />
+            {hasNextPage && <button className="button is-primary" onClick={fetchNextPage}>Load more</button>}
         </>
     );
 }
@@ -55,7 +60,7 @@ function ProfileElement({ header, description }) {
 }
 
 function Publications({ publications }) {
-    let desc = publications.map((pub) => <Publication citation={pub.citation} link={pub.link} key={pub.id} />);
+    let desc = publications?.pages?.map(p => p?.results?.map((pub) => <Publication citation={pub.citation} link={pub.link} key={pub.id} />));
     return (
         <ProfileElement header="Publications" description={desc} />
     );
