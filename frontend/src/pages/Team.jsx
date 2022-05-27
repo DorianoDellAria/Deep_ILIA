@@ -1,5 +1,6 @@
 import React from 'react'
 import './Team.scss'
+import johnDoe from '../assets/profiles/john_doe.png'
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getGroup } from '../api'
@@ -56,7 +57,7 @@ function TeamMember({ member, prof }) {
     return (
         <div className="team-member">
             <div className={prof ? "team-image-prof" : "team-image-student"}>
-                {member.profile_pic ? <img src={member.profile_pic} alt="profileImage" height='151' width='151' /> : <img src="./src/assets/profiles/john_doe.png" alt="profileImage" height='151' width='151' />}
+                {member.profile_pic ? <img src={member.profile_pic} alt="profileImage" height='151' width='151' /> : <img src={johnDoe} alt="profileImage" height='151' width='151' />}
             </div>
             <div className="team-member-info">
                 <Link to={"/profile/" + member.username}>

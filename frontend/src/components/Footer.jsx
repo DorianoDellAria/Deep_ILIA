@@ -1,4 +1,11 @@
 import React from 'react'
+import logoDeep2 from '../assets/logo-deep-2.svg'
+import footerFace from '../assets/footer-face.svg'
+import footerPosition from '../assets/footer-position.svg'
+import facebook from '../assets/facebook.svg'
+import twitter from '../assets/twitter.svg'
+import youtube from '../assets/youtube.svg'
+import map from '../assets/map.svg'
 import "./Footer.scss"
 import { Link } from 'react-router-dom'
 
@@ -9,13 +16,13 @@ function Footer() {
                 <div className="footer-content">
                     <div className="footer-content-left">
                         <div className="footer-logo">
-                            <img src="/src/assets/logo-deep-2.svg" />
+                            <img src={logoDeep2} />
                         </div>
 
                         <div className="contacts">
                             <div className="contact">
                                 <div className="constact-img">
-                                    <img src="/src/assets/footer-face.svg" />
+                                    <img src={footerFace} />
                                 </div>
                                 <div className="contact-text">
                                     Prof. Sidi Ahmed MAHMOUDI
@@ -23,7 +30,7 @@ function Footer() {
                             </div>
                             <div className="contact">
                                 <div className="constact-img">
-                                    <img src="/src/assets/footer-position.svg" />
+                                    <img src={footerPosition} />
                                 </div>
                                 <p className="contact-text">
                                     Rue de Houdain 9 <br /> 7000 Mons <br /> Belgique
@@ -33,19 +40,19 @@ function Footer() {
 
                         <div className="footer-social">
                             <div className="footer-social-item">
-                                <img src="/src/assets/facebook.svg" />
+                                <img src={facebook} />
                             </div>
                             <div className="footer-social-item">
-                                <img src="/src/assets/twitter.svg" />
+                                <img src={twitter} />
                             </div>
                             <div className="footer-social-item">
-                                <img src="/src/assets/youtube.svg" />
+                                <img src={youtube} />
                             </div>
                         </div>
 
                     </div>
                     <div className="footer-content-center">
-                        <img className='map' src="/src/assets/map.svg" alt="" />
+                        <img className='map' src={map} alt="" />
                     </div>
                     <div className="footer-content-right">
                         <h3>RESSOURCES</h3>

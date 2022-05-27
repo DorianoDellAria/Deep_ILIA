@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useQuery } from 'react-query'
 import { getProjects } from '../api'
+import johnDoe from '../assets/profiles/john_doe.png'
 
 import './Projects.scss'
 
@@ -9,7 +10,7 @@ function Members({ title, members }) {
   return <div className="project-members-type">
     <h3>{title}</h3>
     <div className="project-members-list">
-      {members.map(member => <img className='project-members-list-profile' key={member.id} src={member?.profile_pic || './src/assets/profiles/john_doe.png'} alt={member.username} />)}
+      {members.map(member => <img className='project-members-list-profile' key={member.id} src={member?.profile_pic || johnDoe} alt={member.username} />)}
     </div>
   </div>
 }
