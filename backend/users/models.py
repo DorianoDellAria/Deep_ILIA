@@ -27,7 +27,6 @@ def partners(instance, filename):
 
 
 class User(AbstractUser):
-    # TODO: TextField
     summary = models.CharField(max_length=200)
     biography = models.TextField()
     orbi_url = models.CharField(max_length=200, blank=True)
