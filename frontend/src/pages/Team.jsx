@@ -53,10 +53,6 @@ function TeamSection({ sectionName, members, color, prof }) {
 }
 
 function TeamMember({ member, prof }) {
-<<<<<<< HEAD
-=======
-    // TODO : add icons
->>>>>>> 577203ff538aadfd167180b7c7d85b1757cf678e
     let social_networks = {}
     member.social_networks.map((link) => {
         if (link.type === 'linkedin') {
