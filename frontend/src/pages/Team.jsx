@@ -4,6 +4,7 @@ import johnDoe from '../assets/profiles/john_doe.png'
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getGroup } from '../api'
+import { Linkedin, Github, Web } from '../components/icons';
 
 
 const colors = {
@@ -53,7 +54,18 @@ function TeamSection({ sectionName, members, color, prof }) {
 }
 
 function TeamMember({ member, prof }) {
-    // TODO : add icons
+    let social_networks = {}
+    member.social_networks.map((link) => {
+        if (link.type === 'linkedin') {
+            social_networks.linkedin = link.link
+        }
+        if (link.type === 'github') {
+            social_networks.github = link.link
+        }
+        if (link.type === 'site') {
+            social_networks.site = link.link
+        }
+    })
     return (
         <div className="team-member">
             <div className={prof ? "team-image-prof" : "team-image-student"}>
@@ -62,14 +74,22 @@ function TeamMember({ member, prof }) {
             <div className="team-member-info">
                 <Link to={"/profile/" + member.username}>
                     <h4>
-                        {member.username}
+                        {member.first_name + " " + member.last_name}
                     </h4>
                 </Link>
                 <p>
                     {member.summary}
                 </p>
                 <p>
-                    réseau IMAGE
+                    {social_networks.github && <a href={social_networks.github} target="_blank" style={{ margin: '0 5px' }}>
+                        <Github color="#000" width='30' height='30' />
+                    </a>}
+                    {social_networks.linkedin && <a href={social_networks.linkedin} target="_blank" style={{ margin: '0 5px' }}>
+                        <Linkedin color="#000" width='30' height='30' />
+                    </a>}
+                    {social_networks.site && <a href={social_networks.site} target="_blank" style={{ margin: '0 5px' }}>
+                        <Web color="#000" width='30' height='30' />
+                    </a>}
                 </p>
             </div>
         </div>
