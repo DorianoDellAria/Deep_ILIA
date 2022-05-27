@@ -92,7 +92,7 @@ def create_project(request):
 class GetPublicationsView(ListAPIView):
     serializer_class = PublicationSerializer
     pagination_class = CustomPagination
-    queryset = Publication.objects.all()
+    queryset = Publication.objects.all().order_by('-id')
 
 
 class GetUserPublicationsView(ListAPIView):
@@ -106,7 +106,7 @@ class GetUserPublicationsView(ListAPIView):
         user = User.objects.filter(username=username).first()
         if not user:
             return Publication.objects.none()
-        return Publication.objects.filter(user_id=user.id)
+        return Publication.objects.filter(user_id=user.id).order_by('-id')
 
 
 @api_view(['POST'])
