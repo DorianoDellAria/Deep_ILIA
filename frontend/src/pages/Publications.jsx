@@ -9,7 +9,6 @@ function Publications() {
   const { data: publications, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery('publications', getPublications, {
     getNextPageParam: (lastPage) => lastPage.next,
   })
-  console.log(publications);
   return <>
     <h1 className="is-primary">Publications</h1>
     <div className="publications">

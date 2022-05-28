@@ -6,3 +6,4 @@ django-resized
 beautifulsoup4
 requests
 Pillow
+psycopg2

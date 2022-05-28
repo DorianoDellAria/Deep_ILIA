@@ -1,26 +1,26 @@
 ---
 version: "3"
 services:
-  # db:
-  #   image: "postgres:14"
-  #   volumes:
-  #     - "db_data:/var/lib/postgresql/data"
-  #   environment:
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=mysecretpassword
-  #     - POSTGRES_DB=mydb
+  db:
+    image: "postgres:14"
+    volumes:
+      - "db_data:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=mydb
 
-  # pgadmin:
-  #   image: "dpage/pgadmin4:6"
-  #   ports:
-  #     - "8091:80"
-  #   volumes:
-  #     - "pg_admin_data:/var/lib/pgadmin"
-  #   environment:
-  #     - PGADMIN_DEFAULT_EMAIL=user@domain.com
-  #     - PGADMIN_DEFAULT_PASSWORD=password
-  #   depends_on:
-  #     - db
+  pgadmin:
+    image: "dpage/pgadmin4:6"
+    ports:
+      - "8091:80"
+    volumes:
+      - "pg_admin_data:/var/lib/pgadmin"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+    depends_on:
+      - db
 
   backend:
     build:
@@ -70,6 +70,6 @@ services:
       - "80:80"
       - "8080:8080"
 
-# volumes:
-#   db_data:
-#   pg_admin_data:
+volumes:
+  db_data:
+  pg_admin_data:
