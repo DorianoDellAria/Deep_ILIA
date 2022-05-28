@@ -32,6 +32,10 @@
     margin-top: 60px;
     display: flex;
     justify-content: center;
+
+    img {
+      max-height: 500px;
+    }
   }
 
   p {

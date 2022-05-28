@@ -64,3 +64,17 @@ class Project(models.Model):
         User, related_name='projects_research', blank=True)
     collaborators = models.ManyToManyField(
         User, related_name='projects_collab', blank=True)
+
+
+class New(models.Model):
+    title = models.CharField(max_length=200)
+    date = models.DateField(null=True, blank=True)
+    description = models.TextField()
+    image_url = models.ImageField(upload_to=partners, blank=True)
+
+
+class Event(models.Model):
+    title = models.CharField(max_length=200)
+    date = models.DateField(null=True, blank=True)
+    description = models.TextField()
+    image_url = models.ImageField(upload_to=partners, blank=True)

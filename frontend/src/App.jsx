@@ -7,6 +7,8 @@ import Footer from './components/Footer'
 
 import MainPage from './pages/MainPage'
 import Projects from './pages/Projects'
+import Events from './pages/Events'
+import News from './pages/News'
 import Team from './pages/Team'
 import Profile from './pages/Profile'
 import Publications from './pages/Publications'
@@ -57,11 +59,13 @@ function App() {
               <Routes>
                 <Route path='/' exact element={<MainPage />} />
                 <Route path='/projects' exact element={<Projects />} />
+                <Route path='/events' exact element={<Events />} />
+                <Route path='/news' exact element={<News />} />
                 <Route path='/team' exact element={<Team />} />
                 <Route path='/profile/:username' element={<Profile />} />
                 <Route path='/publications' element={<Publications />} />
                 <Route path='/login' element={<Login setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />} />
-                <Route path='/signup' element={<Signup setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />}  />
+                <Route path='/signup' element={<Signup setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />} />
               </Routes>
             </div>
           </div>

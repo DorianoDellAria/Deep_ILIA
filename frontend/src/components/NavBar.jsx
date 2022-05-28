@@ -66,10 +66,10 @@ function NavBar({ logout }) {
           <Link className="navbar-item" to="#">
             Applications &amp; Demos
           </Link>
-          <Link className="navbar-item" to="#">
+          <Link className="navbar-item" to="/events">
             Events
           </Link>
-          <Link className="navbar-item" to="#">
+          <Link className="navbar-item" to="/news">
             News
           </Link>
           <span className="navbar-item">

@@ -13,12 +13,12 @@ export async function getUser(username) {
     return response.data;
 }
 
-export async function getPublications({ pageParam=1 }) {
+export async function getPublications({ pageParam = 1 }) {
     const response = await request.get('/get_publications/?page=' + pageParam);
     return response.data;
 }
 
-export async function getUserPublications({username, pageParam=1}) {
+export async function getUserPublications({ username, pageParam = 1 }) {
     const response = await request.get('/get_publications/' + username + '/?page=' + pageParam);
     return response.data;
 }
@@ -88,5 +88,16 @@ export async function getGroup(goup_name) {
 
 export async function getProjects() {
     const response = await request.get('/get_projects');
+    return response.data;
+}
+
+
+export async function getNews() {
+    const response = await request.get('/news');
+    return response.data;
+}
+
+export async function getEvents() {
+    const response = await request.get('/events');
     return response.data;
 }
