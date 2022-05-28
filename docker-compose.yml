@@ -26,6 +26,7 @@ services:
     build:
       context: ./backend
     image: "deep-ilia-backend:1.0"
+    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.back-router.rule=PathPrefix(`/api`) || PathPrefix(`/media`) || PathPrefix(`/admin`) || PathPrefix(`/static`)"
