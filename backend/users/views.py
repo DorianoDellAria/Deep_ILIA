@@ -2,8 +2,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView
-from .models import User, Project, Publication, SocialNetwork
-from .serializers import UserSerializer, ProjectSerializer, PublicationSerializer, SocialNetworkSerializer
+from .models import User, Project, Publication, SocialNetwork, New, Event
+from .serializers import UserSerializer, ProjectSerializer, PublicationSerializer, SocialNetworkSerializer, NewSerializer, EventSerializer
 from .pagination import CustomPagination
 import logging
 
@@ -116,3 +116,17 @@ def update_image(request):
     user.profile_pic = request.data.get('image')
     user.save()
     return Response({'message': 'image updated'})
+
+
+@api_view(['GET'])
+def get_news(request):
+    news = New.objects.all()
+    serializer = NewSerializer(news, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_events(request):
+    events = Event.objects.all()
+    serializer = EventSerializer(events, many=True)
+    return Response(serializer.data)
