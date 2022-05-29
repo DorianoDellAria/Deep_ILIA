@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Project, Publication, SocialNetwork, New, Event
+from .models import User, Project, Publication, SocialNetwork, New, Event, Application
 import logging
 
 logger = logging.getLogger(__name__)
@@ -67,4 +67,11 @@ class NewSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
+        fields = '__all__'
+
+    
+
+class ApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
         fields = '__all__'

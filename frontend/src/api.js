@@ -101,3 +101,21 @@ export async function getEvents() {
     const response = await request.get('/events');
     return response.data;
 }
+
+export async function getApplications() {
+    const response = await request.get('/applications');
+    return response.data;
+}
+
+export async function fireDetection(image) {
+    let formData = new FormData();
+    formData.append('image', image);
+
+    const response = await axios.post('http://localhost:5000/fire', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Accept': '*/*',
+        }
+    });
+    return response.data;
+}

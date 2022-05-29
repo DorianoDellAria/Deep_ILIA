@@ -14,6 +14,9 @@ import Profile from './pages/Profile'
 import Publications from './pages/Publications'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Applications from './pages/Applications'
+
+import Fire from './applications/Fire'
 
 import { useQuery } from 'react-query'
 import CredentialContext from './CredentialContext'
@@ -66,6 +69,8 @@ function App() {
                 <Route path='/publications' element={<Publications />} />
                 <Route path='/login' element={<Login setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />} />
                 <Route path='/signup' element={<Signup setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />} />
+                <Route path='/applications' element={<Applications />} />
+                <Route path='/applications/fire' element={<Fire />} />
               </Routes>
             </div>
           </div>

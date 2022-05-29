@@ -63,7 +63,7 @@ function NavBar({ logout }) {
           <Link className="navbar-item" to="/publications">
             Publications
           </Link>
-          <Link className="navbar-item" to="#">
+          <Link className="navbar-item" to="/applications">
             Applications &amp; Demos
           </Link>
           <Link className="navbar-item" to="/events">

@@ -26,4 +26,5 @@ urlpatterns = [
     path('update_image/', views.update_image, name='update_image'),
     path('events/', views.get_events, name='get_events'),
     path('news/', views.get_news, name='get_news'),
+    path('applications/', views.get_applications, name='get_applications'),
 ]

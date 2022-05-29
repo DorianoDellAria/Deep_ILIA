@@ -78,3 +78,14 @@ class Event(models.Model):
     date = models.DateField(null=True, blank=True)
     description = models.TextField()
     image_url = models.ImageField(upload_to=partners, blank=True)
+
+
+class Application(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.CharField(max_length=200)
+    abstract = models.TextField()
+    video_id = models.CharField(max_length=200, blank=True)
+    application_uri = models.CharField(max_length=200, blank=True)
+    application_host = models.CharField(max_length=200, blank=True)
+    github_url = models.CharField(max_length=200, blank=True)
+    site_url = models.CharField(max_length=200, blank=True)

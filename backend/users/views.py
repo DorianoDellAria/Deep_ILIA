@@ -2,8 +2,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView
-from .models import User, Project, Publication, SocialNetwork, New, Event
-from .serializers import UserSerializer, ProjectSerializer, PublicationSerializer, SocialNetworkSerializer, NewSerializer, EventSerializer
+from .models import User, Project, Publication, SocialNetwork, New, Event, Application
+from .serializers import UserSerializer, ProjectSerializer, PublicationSerializer, SocialNetworkSerializer, NewSerializer, EventSerializer, ApplicationSerializer
 from .pagination import CustomPagination
 import logging
 
@@ -129,4 +129,11 @@ def get_news(request):
 def get_events(request):
     events = Event.objects.all()
     serializer = EventSerializer(events, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_applications(request):
+    applications = Application.objects.all()
+    serializer = ApplicationSerializer(applications, many=True)
     return Response(serializer.data)

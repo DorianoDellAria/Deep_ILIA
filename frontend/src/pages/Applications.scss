@@ -1,0 +1,27 @@
+@import "../variables.scss";
+
+
+.appli {
+
+    
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        margin: 30px 0;
+    }
+
+    &-content {
+        display: flex;
+    }
+
+    &-video {
+        width: 100%;
+        height: auto;
+        margin-left: 30px;
+    }
+
+    // &-title {
+
+    // }
+}
