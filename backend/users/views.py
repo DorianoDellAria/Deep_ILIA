@@ -2,8 +2,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView
-from .models import User, Project, Publication, SocialNetwork, New, Event, Application
-from .serializers import UserSerializer, ProjectSerializer, PublicationSerializer, SocialNetworkSerializer, NewSerializer, EventSerializer, ApplicationSerializer
+from .models import User, Project, Publication, SocialNetwork, New, Event, Application, ApplicationFeedback
+from .serializers import UserSerializer, ProjectSerializer, PublicationSerializer, SocialNetworkSerializer, NewSerializer, EventSerializer, ApplicationSerializer, ApplicationFeedbackSerializer
 from .pagination import CustomPagination
 import logging
 
@@ -137,3 +137,20 @@ def get_applications(request):
     applications = Application.objects.all()
     serializer = ApplicationSerializer(applications, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_applications_feedback(request, application_id):
+    feedbacks = ApplicationFeedback.objects.filter(application_id=application_id).order_by('-date')
+    serializer = ApplicationFeedbackSerializer(feedbacks, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def send_feedback(request):
+    serializer = ApplicationFeedbackSerializer(data=request.data, context={'request': request})
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)

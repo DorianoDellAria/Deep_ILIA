@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.timezone import now
 from django_resized import ResizedImageField
 
 import os
@@ -89,3 +90,12 @@ class Application(models.Model):
     application_host = models.CharField(max_length=200, blank=True)
     github_url = models.CharField(max_length=200, blank=True)
     site_url = models.CharField(max_length=200, blank=True)
+
+
+class ApplicationFeedback(models.Model):
+    application_id = models.ForeignKey(
+        Application, on_delete=models.CASCADE, related_name='feedbacks')
+    user_id = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='feedbacks')
+    feedback = models.TextField()
+    date = models.DateTimeField(default=now)

@@ -27,10 +27,9 @@ function Applications() {
     )
 }
 
-function Appli({ name, description, abstract, video_id, application_uri, application_host, github_url, site_url }) {
+function Appli({ id, name, description, abstract, video_id, application_uri, application_host, github_url, site_url }) {
 
-
-    const { isLoged, username } = useContext(CredentialContext)
+    const { isLoged } = useContext(CredentialContext)
     return <>
         <div className="appli">
             <div className="appli-header">
@@ -62,7 +61,7 @@ function Appli({ name, description, abstract, video_id, application_uri, applica
                 }
             </div>
             <div className="appli-footer">
-                {application_uri && <Link to={isLoged ? application_uri : '/login'} state={{application_host: application_host}} >
+                {application_uri && <Link to={isLoged ? application_uri : '/login'} state={{ application_host: application_host, id: id }} >
                     <button className="button is-primary">Try It</button>
                 </Link>
                 }

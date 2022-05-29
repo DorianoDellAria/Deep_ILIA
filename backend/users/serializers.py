@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Project, Publication, SocialNetwork, New, Event, Application
+from .models import ApplicationFeedback, User, Project, Publication, SocialNetwork, New, Event, Application, ApplicationFeedback
 import logging
 
 logger = logging.getLogger(__name__)
@@ -69,9 +69,27 @@ class EventSerializer(serializers.ModelSerializer):
         model = Event
         fields = '__all__'
 
-    
 
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = '__all__'
+
+
+class ApplicationFeedbackSerializer(serializers.ModelSerializer):
+    user_id = UserSerializer(read_only=True)
+    date = serializers.DateTimeField(read_only=True)
+    class Meta:
+        model = ApplicationFeedback
+        # fields ='__all__'
+        fields = ('id', 'user_id', 'application_id', 'feedback', 'date')
+    
+    def create(self, validated_data):
+        # logger.error('ApplicationFeedbackSerializer.create')
+        user = self.context['request'].user
+        application_id = validated_data.pop('application_id')
+        # application = Application.objects.get(id=application_data['id'])
+        # logger.error(user_id)
+        feedback = ApplicationFeedback.objects.create(user_id=user, application_id=application_id, **validated_data)
+        return feedback
+

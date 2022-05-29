@@ -27,4 +27,6 @@ urlpatterns = [
     path('events/', views.get_events, name='get_events'),
     path('news/', views.get_news, name='get_news'),
     path('applications/', views.get_applications, name='get_applications'),
+    path('feedback/<str:application_id>', views.get_applications_feedback, name='get_feedback'),
+    path('send_feedback/', views.send_feedback, name='send_feedback'),
 ]

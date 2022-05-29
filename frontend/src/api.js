@@ -107,11 +107,28 @@ export async function getApplications() {
     return response.data;
 }
 
-export async function fireDetection(image) {
+export async function getApplicationFeedback(application_id) {
+    const response = await request.get('/feedback/' + application_id);
+    return response.data;
+}
+
+export async function sendFeedback(token, application_id, feedback) {
+    const response = await request.post('/send_feedback/', {
+        feedback: feedback,
+        application_id: application_id,
+    }, {
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        }
+    });
+    return response.data;
+}
+
+export async function applicationResults(image, host) {
     let formData = new FormData();
     formData.append('image', image);
 
-    const response = await axios.post('http://localhost:5000/fire', formData, {
+    const response = await axios.post(host, formData, {
         headers: {
             'Content-Type': 'multipart/form-data',
             'Accept': '*/*',
