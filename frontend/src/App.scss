@@ -4,6 +4,7 @@
 @import "./variables.scss";
 
 @import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/bulma-carousel/src/sass/index.sass";
 
 body {
   background-image: url(./assets/background.svg);
@@ -158,7 +159,8 @@ h3 {
 a.button.is-secondary {
   background-color: $secondary;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: #ffffff;
   }
 }
