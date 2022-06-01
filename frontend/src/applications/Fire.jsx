@@ -4,6 +4,7 @@ import CredentialContext from '../CredentialContext'
 import { useContext } from 'react'
 import { applicationResults, getApplicationFeedback, sendFeedback } from '../api'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
+import JohnDoe from '../assets/profiles/john_doe.png'
 import '../pages/Login.scss'
 import './Fire.scss'
 
@@ -36,8 +37,8 @@ function Fire() {
         onSuccess: (data) => {
             // console.log(data);
             setSend(false)
-            setResult(data.result)
-            setGradCam(data.grad_cam)
+            setResult(data.prediction)
+            setGradCam(data.gradcam)
         },
         onError: (err) => {
             setSend(false)
@@ -119,7 +120,7 @@ function AddFeedback() {
 function Feedback({ user_id, feedback }) {
     return (
         <div className="feedback-item">
-            {user_id.profile_pic && <img src={user_id.profile_pic} alt="profile_pic" />}
+            <img src={user_id.profile_pic || JohnDoe} alt="profile_pic" />
 
             <div className="feedback-content">
                 <h4>{user_id.first_name} {user_id.last_name}</h4>

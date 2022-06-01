@@ -32,6 +32,8 @@ services:
       - "traefik.http.routers.back-router.rule=PathPrefix(`/api`) || PathPrefix(`/media`) || PathPrefix(`/admin`) || PathPrefix(`/static`)"
       - "traefik.http.routers.back-router.entrypoints=http"
       - "traefik.http.services.back-service.loadbalancer.server.port=8000"
+    volumes:
+      - "backend_media:/app/media"
 
   frontend:
     build:
@@ -74,3 +76,4 @@ services:
 volumes:
   db_data:
   pg_admin_data:
+  backend_media:
