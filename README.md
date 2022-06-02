@@ -22,8 +22,8 @@ docker-compose up -d
 
 ## Scrapping des publications
 
-Dans la configuration actuelle du projet (et dans le cadre de nos tests), le scrapper est lancé toutes les 5 minutes.  
-Il est cependant possible de régler le délai de lancement du scrapper en modifiant le fichier `backend/backend/settings.py`, la variable `CRONJOBS`.
+Dans la configuration actuelle du projet (et dans le cadre de nos tests), le scraper est lancé toutes les 5 minutes.  
+Il est cependant possible de régler le délai de lancement du scraper en modifiant le fichier `backend/backend/settings.py`, la variable `CRONJOBS`.
 
 ```sh
 CRONJOBS = [
@@ -33,4 +33,14 @@ CRONJOBS = [
 
 Pour que les articles soient récupérés, il faut fournir l'URL du profil ORBI de l'utilisateur.
 
+
+## Application
+
+Pour ajouter une vidéo à une application, elle doit être sur Youtube (en public on en non répertorié). Dans le champ `video_id`, il faudra fournir l'id de la vidéo et non l'URL complète.
+
+
+[https://www.youtube.com/watch?v=dQw4w9WgXcQ](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+
+Sur l'URL ci-dessus, l'ID est la chaine de caractère contenue dans la variable v : `dQw4w9WgXcQ`.
 
