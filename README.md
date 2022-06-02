@@ -20,7 +20,7 @@ docker-compose build
 docker-compose up -d
 ```
 
-## Scrapping des publications
+## Scraping des publications
 
 Dans la configuration actuelle du projet (et dans le cadre de nos tests), le scraper est lancé toutes les 5 minutes.  
 Il est cependant possible de régler le délai de lancement du scraper en modifiant le fichier `backend/backend/settings.py`, la variable `CRONJOBS`.
