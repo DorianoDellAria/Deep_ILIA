@@ -3,24 +3,13 @@ version: "3"
 services:
   db:
     image: "postgres:14"
+    restart: unless-stopped
     volumes:
       - "db_data:/var/lib/postgresql/data"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_DB=mydb
-
-  pgadmin:
-    image: "dpage/pgadmin4:6"
-    ports:
-      - "8091:80"
-    volumes:
-      - "pg_admin_data:/var/lib/pgadmin"
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=user@domain.com
-      - PGADMIN_DEFAULT_PASSWORD=password
-    depends_on:
-      - db
 
   backend:
     build:
@@ -39,8 +28,7 @@ services:
     build:
       context: ./frontend
     image: "deep-ilia-frontend:1.0"
-    # ports:
-    #   - "8000:8000"
+    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.deepilia-router.rule=PathPrefix(`/`)"
@@ -49,24 +37,20 @@ services:
 
   proxy:
     image: "traefik:v2.5.4"
+    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.api.rule=Host(`localhost`)"
       - "traefik.http.routers.api.service=api@internal"
-      # - "traefik.http.routers.api.middlewares=auth"
       - "traefik.http.routers.api.entrypoints=api"
-      # - "traefik.http.middlewares.auth.basicauth.users=test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/,test2:$$apr1$$d9hr9HBB$$4HxwgUir3HP4EsggP/QNo0"
     command:
       - "--api=true"
       - "--api.dashboard=true"
-      # - "--api.insecure=true"
       - "--accesslog.filepath=/logs/access.log"
       - "--providers.docker"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.http.address=:80"
-      # - "--entrypoints.https.address=:443"
       - "--entrypoints.api.address=:8080"
-      # - "--defaulfentrypoints=http,https,ws,wss"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
@@ -75,5 +59,4 @@ services:
 
 volumes:
   db_data:
-  pg_admin_data:
   backend_media:
