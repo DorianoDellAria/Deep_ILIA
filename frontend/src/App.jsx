@@ -17,6 +17,7 @@ import Signup from './pages/Signup'
 import Applications from './pages/Applications'
 
 import Fire from './applications/Fire'
+import Excavator from './applications/Excavator'
 
 import { useQuery } from 'react-query'
 import CredentialContext from './CredentialContext'
@@ -71,6 +72,7 @@ function App() {
                 <Route path='/signup' element={<Signup setAccess={setAccess} setRefresh={setRefresh} setUsername={setUsername} setIsLoged={setIsLoged} />} />
                 <Route path='/applications' element={<Applications />} />
                 <Route path='/applications/fire' element={<Fire />} />
+                <Route path='/applications/excavator' element={<Excavator />} />
               </Routes>
             </div>
           </div>
