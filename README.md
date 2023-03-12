@@ -20,6 +20,14 @@ docker-compose build
 docker-compose up -d
 ```
 
+## Création de compte admin
+
+```sh
+docker-compose exec backend python manage.py createsuperuser
+```
+
+La page admin est disponible sur <URL>:<PORT>/admin
+
 ## Scraping des publications
 
 Dans la configuration actuelle du projet (et dans le cadre de nos tests), le scraper est lancé toutes les 5 minutes.  
